@@ -138,12 +138,12 @@ export const Experience = () => {
                     </div>
                   </div>
                   
-                  <div className="space-y-2 pt-2">
+                  <div className="space-y-1.5 sm:space-y-2 pt-2">
                     {exp.responsibilities.map((resp, i) => (
-                      <p key={i} className="text-xs sm:text-sm text-foreground/70 leading-relaxed font-light flex items-start gap-2 sm:gap-3">
-                        <span className="text-foreground/80 mt-1.5 text-base sm:text-lg leading-none flex-shrink-0">•</span>
-                        <span className="break-words">{resp}</span>
-                      </p>
+                      <div key={i} className="text-xs sm:text-sm text-foreground/70 leading-relaxed font-light flex gap-2 sm:gap-3">
+                        <span className="text-foreground/80 text-sm sm:text-base leading-relaxed flex-shrink-0">•</span>
+                        <span className="break-words flex-1">{resp}</span>
+                      </div>
                     ))}
                   </div>
                 </div>

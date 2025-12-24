@@ -27,8 +27,8 @@ export const workExperience: ExperienceItem[] = [
     period: "Sept 2024 - Present",
     logo: "/medt.png",
     responsibilities: [
-      "Helped build CradleWatch, a real-time infant monitoring system designed to alert caregivers of distress, supporting proactive parenting",
-      "Collaborated closely with fellow software, electrical, and mechanical sub-teams to deliver a fully functional cross-disciplinary prototype",
+      "Helped build CradleWatch, a real-time infant monitoring system designed to alert caregivers of distress, supporting proactive parenting.",
+      "Collaborated closely with fellow software, electrical, and mechanical sub-teams to deliver a fully functional cross-disciplinary prototype.",
       "Currently contributing to the VALID AI team, working on an NLP-based CT-scan decision model using ClinicalBERT to improve detection of unnecessary imaging, ultimately saving hospitals time and money."
     ]
   },
@@ -52,7 +52,7 @@ export const workExperience: ExperienceItem[] = [
     logo: "/macai.png",
     github: "https://github.com/McMasterAI-Society/DeepFakeDetector",
     responsibilities: [
-      "Working on the DeepFakeDetector project, with the role of 'Research & Modeling'",
+      "Working on the DeepFakeDetector project, with the role of 'Research & Modeling'.",
       "Currently fine-tuning Vision Transformers and developing custom classification heads, analyzing model accuracy on diverse datasets.",
     ]
   },
@@ -62,9 +62,9 @@ export const workExperience: ExperienceItem[] = [
     period: "Feb 2025 - Sep 2025",
     logo: "/robosub.png", // Replace with Robosub logo
     responsibilities: [
-      "Computer Vision subteam member on McMaster RoboSub, building AI-driven systems for autonomous underwater vehicles (AUVs)",
-      "Completed extensive dataset research and hardware/software benchmarking to align vision models with AUV mission needs",
-      "Developed core skills in ROS2, Gazebo, PyTorch, and TensorFlow for real-time simulation and model deployment",
+      "Computer Vision subteam member on McMaster RoboSub, building AI-driven systems for autonomous underwater vehicles (AUVs).",
+      "Completed extensive dataset research and hardware/software benchmarking to align vision models with AUV mission needs.",
+      "Developed core skills in ROS2, Gazebo, PyTorch, and TensorFlow for real-time simulation and model deployment.",
     ]
   },
   {
@@ -73,9 +73,9 @@ export const workExperience: ExperienceItem[] = [
     period: "Sept 2021 - Present",
     logo: "/book.png", // Replace with book/education icon
     responsibilities: [
-      "Provided academic tutoring services to local high school students in the community",
-      "Specialized in STEM subjects, with a focus on STEM (mathematics, physics, computer science, etc.)",
-      "Helped students strengthen core concepts, improve grades, and build confidence in problem-solving"
+      "Provided academic tutoring services to local high school students in the community.",
+      "Specialized in STEM subjects, with a focus on STEM (mathematics, physics, computer science, etc.).",
+      "Helped students strengthen core concepts, improve grades, and build confidence in problem-solving."
     ]
   },
   {
@@ -99,8 +99,8 @@ export const volunteerExperience: ExperienceItem[] = [
     period: "Sept 2024 - Aug 2025",
     logo: "/MIA-modified.png", // Replace with MIA logo
     responsibilities: [
-      "Organizing cultural events and activities to promote Indian culture on campus",
-      "Collaborating with other student organizations to enhance community engagement"
+      "Organizing cultural events and activities to promote Indian culture on campus.",
+      "Collaborating with other student organizations to enhance community engagement."
     ]
   },
   {

@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { navigation } from "@/content/navigation";
+import { hero } from "@/content/hero";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [theme, setTheme] = useState<"light" | "dark">(
-    () => (localStorage.getItem("theme") as "light" | "dark") || "light"
+    () => (localStorage.getItem("theme") as "light" | "dark") || "dark"
   );
 
   useEffect(() => {
@@ -55,30 +55,30 @@ export const Header = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
+            ? "bg-background/80 backdrop-blur-md border-b border-border/50"
             : "bg-transparent"
         }`}
       >
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
+        <nav className="container mx-auto px-6 sm:px-8 lg:px-12" aria-label="Main navigation">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo - Minimal */}
             <a
               href="#home"
-              className="text-xl md:text-2xl font-bold font-poppins hover:opacity-80 transition-opacity"
+              className="text-base font-sans font-medium hover:opacity-70 transition-opacity"
             >
-              Krish <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Bhagirath</span>
+              {hero.firstName}
             </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            {/* Desktop Navigation - Simple links */}
+            <div className="hidden md:flex items-center gap-8">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  className={`text-sm font-medium transition-colors ${
                     activeSection === item.href.replace("#", "")
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground/70 hover:text-foreground hover:bg-secondary"
+                      ? "text-foreground"
+                      : "text-foreground/70 hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -86,27 +86,24 @@ export const Header = () => {
               ))}
               
               {/* Theme Toggle */}
-              <Button
-                variant="ghost"
-                size="icon"
+              <button
                 onClick={toggleTheme}
-                className="ml-2"
+                className="p-2 hover:opacity-70 transition-opacity text-foreground/70 hover:text-foreground"
                 aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
               >
                 {theme === "light" ? (
-                  <Moon className="h-5 w-5" />
+                  <Moon className="h-4 w-4" />
                 ) : (
-                  <Sun className="h-5 w-5" />
+                  <Sun className="h-4 w-4" />
                 )}
-              </Button>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="flex md:hidden items-center gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
+              <button
                 onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-secondary transition-colors"
                 aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
               >
                 {theme === "light" ? (
@@ -114,12 +111,11 @@ export const Header = () => {
                 ) : (
                   <Sun className="h-5 w-5" />
                 )}
-              </Button>
+              </button>
               
-              <Button
-                variant="ghost"
-                size="icon"
+              <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-lg hover:bg-secondary transition-colors"
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -128,7 +124,7 @@ export const Header = () => {
                 ) : (
                   <Menu className="h-6 w-6" />
                 )}
-              </Button>
+              </button>
             </div>
           </div>
 
@@ -141,10 +137,10 @@ export const Header = () => {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                    className={`px-4 py-3 rounded-lg text-sm font-light transition-all ${
                       activeSection === item.href.replace("#", "")
-                        ? "bg-primary/10 text-primary"
-                        : "text-foreground/70 hover:text-foreground hover:bg-secondary"
+                        ? "bg-card text-foreground"
+                        : "text-foreground/70 hover:text-foreground hover:bg-card/50"
                     }`}
                   >
                     {item.name}

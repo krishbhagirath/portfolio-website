@@ -1,132 +1,97 @@
-import { useEffect, useState } from "react";
-import { Github, Linkedin, FileText, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Github, Linkedin, Star, FileText } from "lucide-react";
 import { hero } from "@/content/hero";
+import { SquaresBackground } from "@/components/GalaxyBackground";
 
 export const Hero = () => {
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentTitle = hero.typingTitles[currentTitleIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-    const pauseDuration = 2000;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayedText.length < currentTitle.length) {
-          setDisplayedText(currentTitle.slice(0, displayedText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), pauseDuration);
-        }
-      } else {
-        if (displayedText.length > 0) {
-          setDisplayedText(displayedText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentTitleIndex((prev) => (prev + 1) % hero.typingTitles.length);
-        }
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, currentTitleIndex]);
-
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8"
-      style={{ background: "var(--gradient-hero)" }}
+      className="relative min-h-screen flex items-center pt-24 pb-20 px-6 sm:px-8 lg:px-12"
     >
-      <div className="container mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-6 animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-poppins">
-              {hero.greeting}{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                {hero.name}
-              </span>
-            </h1>
-
-            <div className="text-2xl sm:text-3xl md:text-4xl font-semibold font-poppins min-h-[3rem] flex items-center">
-              <span className="text-foreground/80">I'm a </span>
-              <span className="ml-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                {displayedText}
-                <span className="animate-pulse">|</span>
+      <SquaresBackground />
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left Content - Left Aligned */}
+          <div className="flex flex-col items-start text-left space-y-8">
+            {/* Badge with current role */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-card/50 backdrop-blur-sm">
+              <Star className="w-3.5 h-3.5 text-foreground/70" />
+              <span className="text-sm text-foreground/80 font-light">
+                {hero.badge}
               </span>
             </div>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            {/* Name - Split into first and last, smaller */}
+            <div className="space-y-2">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-foreground">
+                {hero.firstName}
+              </h1>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-foreground">
+                {hero.lastName}
+              </h1>
+            </div>
+
+            {/* Title */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-foreground/90 tracking-wide">
+              {hero.title}
+            </h2>
+
+            {/* Description */}
+            <p className="text-lg sm:text-xl text-foreground/70 font-light max-w-2xl leading-relaxed">
               {hero.description}
             </p>
 
-            {/* Social Links */}
-            <div className="flex gap-4">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
               <a
-                href={hero.social.github}
+                href="#projects"
+                className="px-8 py-3 rounded-md border border-border text-base font-light text-foreground hover:bg-foreground hover:text-background transition-all"
+              >
+                View Projects
+              </a>
+              <a
+                href={hero.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-glow"
-                aria-label="GitHub Profile"
+                className="px-8 py-3 rounded-md bg-foreground text-background text-base font-light hover:bg-foreground/90 transition-all inline-flex items-center gap-2"
               >
-                <Github className="h-6 w-6" />
+                <FileText className="w-4 h-4" />
+                Resume
               </a>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 pt-4">
               <a
                 href={hero.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:shadow-glow"
-                aria-label="LinkedIn Profile"
+                className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center hover:border-border hover:bg-card/50 transition-all"
+                aria-label="LinkedIn"
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="w-5 h-5 text-foreground/70" />
               </a>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button
-                asChild
-                size="lg"
-                className="group bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-glow"
+              <a
+                href={hero.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center hover:border-border hover:bg-card/50 transition-all"
+                aria-label="GitHub"
               >
-                <a href={hero.resumeUrl} target="_blank" rel="noopener noreferrer">
-                  <FileText className="mr-2 h-5 w-5" />
-                  Resume
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </Button>
-              
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="group border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-              >
-                <a href="#contact">
-                  Contact Me
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </Button>
+                <Github className="w-5 h-5 text-foreground/70" />
+              </a>
             </div>
           </div>
 
-          {/* Profile Image */}
-          <div className="relative flex justify-center items-center animate-fade-in">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent opacity-20 blur-3xl animate-pulse"></div>
-              
-              {/* Image container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-                <img
-                  src={hero.profileImage}
-                  alt="Krish Bhagirath - Computer Engineering Student"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-              </div>
+          {/* Right Image - Clean rectangle */}
+          <div className="flex justify-center lg:justify-end items-center">
+            <div className="relative w-80 h-96 sm:w-96 sm:h-[28rem] rounded-lg overflow-hidden bg-secondary border border-border">
+              <img
+                src="/IMG_2819 (2).jpeg"
+                alt="Krish Bhagirath"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
             </div>
           </div>
         </div>

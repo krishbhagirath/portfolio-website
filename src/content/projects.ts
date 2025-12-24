@@ -50,6 +50,78 @@ export const projects: Project[] = [
       {
         label: "See More (Presentation)",
         url: "/cradlewatch.pdf"
+      },
+      {
+        label: "GitHub",
+        url: "https://github.com/krishbhagirath/baby-monitoring-MED-T"
+      }
+    ]
+  },
+  {
+    id: "deepfakedetector",
+    title: "DeepFakeDetector",
+    description: "Hybrid deepfake detection using CNNs, Vision Transformers, and frequency-domain (FFT) fusion model.",
+    thumbnail: "/macaisociety.png",
+    images: [
+      "/macaisociety.png",
+      "/flowchart.png"
+    ],
+    tags: [
+      "Python", "PyTorch", "Convolutional Neural Networks (CNNs)", "Vision Transformer", "FFT", "NumPy", "Pandas",
+      "MatPlotLib", "Next.js", "FastAPI"
+    ],
+    overview: "Overview: Working in a 6-member interdisciplinary team at the McMaster Artificial Intelligence Society to develop an interpretable system for detecting deepfake and AI-generated images.",
+    details: [
+      "Designing a hybrid deepfake detection model, using:",
+      "  • CNNs for localized spatial artifacts and texture inconsistencies.",
+      "  • Vision Transformers for global semantic and contextual features.",
+      "  • FFT-based analysis for frequency-domain generative artifacts.",
+      "\nPersonal contributions are focused on improving model performance and robustness.",
+      "  • Contributing to model architecture design, creating lear visual architecture diagrams illustrating multi-stream feature extraction and learned feature fusion.",
+      "  • Fine-tuning Vision Transformer models on large-scale datasets (OpenFake, WildFake, Dragon datasets).",
+      "  • Experimenting with patch sizes, learning rates, and attention settings.",
+      "  • Implementing task-specific CNN classification heads to aggregate learned features into a single prediction output.",
+      "\nGoal: Building interpretability into the prediction pipeline.",
+      "  • Generating Grad-CAM heatmaps to highlight influential image regions.",
+      "  • Visualizing attention maps to explain model confidence scores.",
+      "\nNext Steps: Developing a full-stack web application for real-time inference.",
+      "  • Next.js frontend for image upload and results visualization.",
+      "  • FastAPI backend for model inference and API endpoints.",
+    ],
+    externalLinks: [
+      {
+        label: "GitHub",
+        url: "https://github.com/McMasterAI-Society/DeepFakeDetector"
+      }
+    ]
+  },
+  {
+    id: "nbamatchpredictor",
+    title: "CourtML",
+    description: "AI-powered baby monitor that detects emotion and alerts parents of distress while they're away.",
+    thumbnail: "/courtml.png", // Replace with CradleWatch thumbnail
+    images: [
+      "/courtml.png"
+    ],
+    tags: [
+      "Python", "React.js", "Sci-Kit Learn", "GitHub Actions", "Ridge Regression", "NBA API"
+    ],
+    overview: "Overview: End-to-end machine learning system for predicting NBA game outcomes using historical and live data.",
+    details: [
+      "Built a complete ML pipeline for NBA match prediction:",
+      "  • Handled data collection, preprocessing, feature engineering, and model training on 8 years of NBA data.",
+      "  • Automated evaluation using rolling-window validation on new season data.",
+      "\nDeveloped and trained predictive models:",
+      "  • Custom-trained a Ridge Regression model for baseline and comparative performance.",
+      "  • Experimented with tree-based models (Random Forest, XGBoost) to improve predictive accuracy.",
+      "\nDelivered predictions through a user-facing interface.",
+      "  • Built a React dashboard to display weekly predictions and accuracy metrics.",
+      "  • Integrated live NBA API data for up-to-date game information.",
+    ],
+    externalLinks: [
+      {
+        label: "GitHub",
+        url: "https://github.com/krishbhagirath/nba-match-predictor"
       }
     ]
   },
@@ -82,6 +154,16 @@ export const projects: Project[] = [
       "• Designed during DeltaHacks XI, PawGress was inspired by the struggle students face in maintaining healthy habits amidst the freedoms of university life. Unlike traditional to-do lists, PawGress uses natural language processing to analyze daily entries, provide feedback, and suggest improved behavior strategies.",
       "• The app was built in React Native for cross-platform compatibility. It integrates the Cohere API for personalized habit coaching and uses AsyncStorage to manage local user state. A dynamic dog avatar represents habit progression, reinforcing positive behaviors through gamification.",
       "• Initial backend integration used Java and Node.js to connect future database functionality via Supabase. Users can eventually interact with suggested activities and celebrate achievements with a broader community."
+    ],
+    externalLinks: [
+      {
+        label: "GitHub",
+        url: "https://github.com/krishbhagirath"
+      },
+      {
+        label: "Devpost",
+        url: "https://devpost.com/software/pawgress-t78w9h"
+      }
     ]
   },
   {
@@ -98,6 +180,12 @@ export const projects: Project[] = [
       "• Responsive layouts with smooth animations",
       "• Deployed via Vercel with GitHub version control",
       "• Next: Add RAG AI chatbot and performance tuning to improve user experience"
+    ],
+    externalLinks: [
+      {
+        label: "GitHub",
+        url: "https://github.com/krishbhagirath/portfolio-website"
+      }
     ]
   },
   {

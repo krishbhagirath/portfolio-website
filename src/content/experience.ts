@@ -4,33 +4,56 @@ export interface ExperienceItem {
   period: string;
   logo: string;
   responsibilities: string[];
+  github?: string;
 }
 
 export const workExperience: ExperienceItem[] = [
   {
-    title: "Engineering Intern",
+    title: "Software Engineering Intern",
     organization: "Novologic",
     period: "May 2025 - August 2025",
-    logo: "/novologic.png", // Replace with Novologic logo
+    logo: "/novologic.png",
     responsibilities: [
-      "Engineered full-stack features with Laravel, PHP, MySQL, JS, HTML/CSS, applying scalable architecture and the repository pattern",
-      "Diagnosed and resolved high-priority bugs, improving UX and app stability by closing functional tickets",
-      "Built and optimized responsive email templates (HTML/CSS/JS) and integrated email APIs for automated outreach",
-      "Performed QA audits and edge-case testing to drive product refinement and ensure release-readiness",
-      "Prototyped an AI-driven help chatbot using React.js and Laravel to streamline user navigation",
-      "Enhanced and organized investor-facing decks and documents for clarity, consistency, and impact"
+      "Refactored 15+ controllers and engineered full-stack features with Laravel, PHP, SQL, and JavaScript, implementing the repository pattern to allow for scalable architecture.",
+      "Prototyped an AI-driven help chatbot using React.js and Laravel to streamline user navigation.",
+      "Generated 10+ qualified leads through building and optimizing responsive CRM-driven email templates (HTML/CSS) and integrated email APIs for automated outreach campaigns.",
+      "Increased feature test coverage from ~65% to ~95% through QA audits and edge-case testing to drive product refinement and ensure release-readiness.",
+      "Enhanced and organized investor-facing decks and documents for clarity, consistency, and impact.",
     ]
   },
   {
     title: "Software Developer",
     organization: "McMaster MedT",
     period: "Sept 2024 - Present",
-    logo: "/medt.png", // Replace with McMaster MedT logo
+    logo: "/medt.png",
     responsibilities: [
-      "Software team member at McMaster's Medical Engineering Design Team (MedT), creating cutting-edge biomedical tech",
       "Helped build CradleWatch, a real-time infant monitoring system designed to alert caregivers of distress, supporting proactive parenting",
-      "Engineered an embedded prototype by integrating servo motors, sensors, and a lightweight UI, enhancing system responsiveness",
-      "Collaborated closely with fellow software, electrical, and mechanical sub-teams to deliver a fully functional cross-disciplinary prototype"
+      "Collaborated closely with fellow software, electrical, and mechanical sub-teams to deliver a fully functional cross-disciplinary prototype",
+      "Currently contributing to the VALID AI team, working on an NLP-based CT-scan decision model using ClinicalBERT to improve detection of unnecessary imaging, ultimately saving hospitals time and money."
+    ]
+  },
+  {
+    title: "Machine Learning Developer",
+    organization: "McMaster Aerial & Drone Robotics Club",
+    period: "Oct 2025 - Present",
+    logo: "/drone.png",
+    github: "https://github.com/McMaster-Drone-Club",
+    responsibilities: [
+      "Training real-time circle detection models with TensorFlow & YOLO to perform mission-specific vision tasks.",
+      "Developing SITL drone simulations with Gazebo and DroneKit to validate autonomous flight logic.",
+      "Using Git and GitHub for version control and team-based ML development with reproducible pipelines.",
+      "Conducted technical research on deploying lightweight object-detection models on NVIDIA Jetson Nano for integration into autonomous drone workflows."
+    ]
+  },
+  {
+    title: "Machine Learning Project Member",
+    organization: "McMaster Artificial Intelligence Society",
+    period: "Oct 2025 - Present",
+    logo: "/macai.png",
+    github: "https://github.com/McMasterAI-Society/DeepFakeDetector",
+    responsibilities: [
+      "Working on the DeepFakeDetector project, with the role of 'Research & Modeling'",
+      "Currently fine-tuning Vision Transformers and developing custom classification heads, analyzing model accuracy on diverse datasets.",
     ]
   },
   {
@@ -42,7 +65,6 @@ export const workExperience: ExperienceItem[] = [
       "Computer Vision subteam member on McMaster RoboSub, building AI-driven systems for autonomous underwater vehicles (AUVs)",
       "Completed extensive dataset research and hardware/software benchmarking to align vision models with AUV mission needs",
       "Developed core skills in ROS2, Gazebo, PyTorch, and TensorFlow for real-time simulation and model deployment",
-      "Currently expanding C++/Python ROS2 development skills ahead of hands-on AUV integration"
     ]
   },
   {

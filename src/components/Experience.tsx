@@ -89,50 +89,50 @@ export const Experience = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
+          <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-border"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {experiences.map((exp, idx) => (
               <div
                 key={idx}
                 ref={(el) => (itemRefs.current[idx] = el)}
-                className={`relative pl-24 transition-all duration-700 ${
+                className={`relative pl-12 sm:pl-24 transition-all duration-700 ${
                   visibleItems.has(idx)
                     ? "opacity-100 translate-x-0"
                     : "opacity-0 -translate-x-4"
                 }`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-6 w-4 h-4 rounded-full bg-foreground border-4 border-background z-10"></div>
+                <div className="absolute left-2 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-foreground border-2 sm:border-4 border-background z-10"></div>
 
                 {/* Experience card */}
-                <div className="relative bg-card border border-border rounded-lg p-6 hover:border-foreground/30 transition-all">
+                <div className="relative bg-card border border-border rounded-lg p-4 sm:p-6 hover:border-foreground/30 transition-all">
                   {exp.github && (
                     <a
                       href={exp.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="absolute right-4 top-4 p-2 rounded-md border border-border hover:border-foreground/40 hover:bg-foreground/5 transition-colors"
+                      className="absolute right-3 top-3 sm:right-4 sm:top-4 p-1.5 sm:p-2 rounded-md border border-border hover:border-foreground/40 hover:bg-foreground/5 transition-colors"
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </a>
                   )}
-                  <div className="flex items-start gap-4 mb-4">
+                  <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4 pr-8 sm:pr-0">
                     {exp.logo && (
                       <img 
                         src={exp.logo} 
                         alt={exp.organization} 
-                        className="w-12 h-12 object-contain flex-shrink-0 rounded" 
+                        className="w-10 h-10 sm:w-12 sm:h-12 object-contain flex-shrink-0 rounded" 
                       />
                     )}
-                    <div className="flex-1">
-                      <h3 className="text-xl font-light mb-1">{exp.title}</h3>
-                      <p className="text-foreground/80 font-light mb-2">{exp.organization}</p>
-                      <div className="flex items-center gap-4 text-sm text-foreground/60 font-light">
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          <span>{exp.period}</span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-light mb-1 break-words">{exp.title}</h3>
+                      <p className="text-sm sm:text-base text-foreground/80 font-light mb-2 break-words">{exp.organization}</p>
+                      <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-foreground/60 font-light flex-wrap">
+                        <div className="flex items-center gap-1.5 sm:gap-2">
+                          <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                          <span className="whitespace-nowrap">{exp.period}</span>
                         </div>
                       </div>
                     </div>
@@ -140,9 +140,9 @@ export const Experience = () => {
                   
                   <div className="space-y-2 pt-2">
                     {exp.responsibilities.map((resp, i) => (
-                      <p key={i} className="text-sm text-foreground/70 leading-relaxed font-light flex items-start gap-3">
-                        <span className="text-foreground/80 mt-1.5 text-lg leading-none">•</span>
-                        <span>{resp}</span>
+                      <p key={i} className="text-xs sm:text-sm text-foreground/70 leading-relaxed font-light flex items-start gap-2 sm:gap-3">
+                        <span className="text-foreground/80 mt-1.5 text-base sm:text-lg leading-none flex-shrink-0">•</span>
+                        <span className="break-words">{resp}</span>
                       </p>
                     ))}
                   </div>

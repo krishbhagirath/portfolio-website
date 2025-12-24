@@ -98,7 +98,7 @@ export const projects: Project[] = [
   {
     id: "nbamatchpredictor",
     title: "CourtML",
-    description: "AI-powered baby monitor that detects emotion and alerts parents of distress while they're away.",
+    description: "Data-driven NBA match predictor that analyzes historical trends to forecast game outcomes.",
     thumbnail: "/courtml.png", // Replace with CradleWatch thumbnail
     images: [
       "/courtml.png"

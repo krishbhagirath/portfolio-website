@@ -2,7 +2,7 @@ export const hero = {
   firstName: "Krish",
   lastName: "Bhagirath",
   badge: "Computer Engineering Student @ McMaster",
-  title: "Software Engineer & ML Enthusiast",
+  title: "Software Engineer & ML Developer",
   description: "Full-stack development, AI/ML, and embedded systems.",
   // skillTags: [
   //   "Full-Stack",

@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { ArrowRight, Github } from "lucide-react";
 import { projects } from "@/content/projects";
 import { Button } from "@/components/ui/button";
@@ -11,18 +12,51 @@ const DevpostIcon = () => (
   </svg>
 );
 
+type ProjectTab = "personal" | "school";
+
 export const Projects = () => {
+  const [tab, setTab] = useState<ProjectTab>("personal");
+
+  const filteredProjects = useMemo(() => {
+    return projects.filter((p) => p.category === tab);
+  }, [tab]);
+
   return (
     <section id="projects" className="py-24 px-6 sm:px-8 lg:px-12">
       <div className="container mx-auto max-w-7xl">
         {/* Title */}
-        <h2 className="text-5xl sm:text-6xl md:text-7xl font-light mb-12">
+        <h2 className="text-5xl sm:text-6xl md:text-7xl font-light mb-6">
           Projects
         </h2>
-        
+
+        {/* Toggle Buttons */}
+        <div className="flex items-center gap-2 mb-12">
+          <button
+            onClick={() => setTab("personal")}
+            className={`px-3 py-1.5 text-sm rounded-md border font-light transition
+              ${tab === "personal"
+                ? "bg-foreground text-background border-foreground"
+                : "bg-transparent text-foreground border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5"
+              }`}
+          >
+            Personal/Club
+          </button>
+
+          <button
+            onClick={() => setTab("school")}
+            className={`px-3 py-1.5 text-sm rounded-md border font-light transition
+              ${tab === "school"
+                ? "bg-foreground text-background border-foreground"
+                : "bg-transparent text-foreground border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5"
+              }`}
+          >
+            School
+          </button>
+        </div>
+
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => {
+          {filteredProjects.map((project) => {
             const githubLink = project.externalLinks?.find((link) => link.label === "GitHub");
             const devpostLink = project.externalLinks?.find((link) => link.label === "Devpost");
             const primaryRepoLink = project.id === "pawgress" ? devpostLink ?? githubLink : githubLink;
@@ -33,23 +67,25 @@ export const Projects = () => {
                   <div className="group cursor-pointer flex flex-col h-full rounded-lg overflow-hidden">
                     {/* Image Section - Light Gray Background */}
                     <div className="relative w-full rounded-t-lg overflow-hidden bg-gray-200 aspect-[16/9]">
-                      <img 
-                        src={project.thumbnail} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover scale-102 group-hover:scale-115 transition-transform duration-500" 
+                      <img
+                        src={project.thumbnail}
+                        alt={project.title}
+                        className="w-full h-full object-cover scale-102 group-hover:scale-115 transition-transform duration-500"
                       />
                     </div>
-                    
+
                     {/* Content Section - Dark Gray Background */}
                     <div className="flex flex-col flex-1 bg-secondary p-6 rounded-b-lg">
                       {/* Title */}
-                      <h3 className="text-xl font-light mb-3 text-foreground leading-tight">{project.title}</h3>
-                      
+                      <h3 className="text-xl font-light mb-3 text-foreground leading-tight">
+                        {project.title}
+                      </h3>
+
                       {/* Description */}
                       <p className="text-sm text-muted-foreground font-light mb-6 flex-1 leading-relaxed">
                         {project.description}
                       </p>
-                      
+
                       {/* Buttons */}
                       <div className="flex gap-2">
                         <button className="flex-1 py-3 px-4 rounded-lg bg-foreground text-background border border-foreground font-light hover:opacity-90 transition-opacity">
@@ -74,18 +110,25 @@ export const Projects = () => {
                     </div>
                   </div>
                 </DialogTrigger>
+
                 <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                   <DialogHeader className="flex flex-row items-start justify-between gap-4">
                     <div>
                       <DialogTitle className="text-2xl font-semibold">{project.title}</DialogTitle>
                     </div>
+
                     {primaryRepoLink && (
                       <Button
                         asChild
                         variant="default"
                         className="group bg-foreground text-background hover:opacity-90"
                       >
-                        <a href={primaryRepoLink.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <a
+                          href={primaryRepoLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2"
+                        >
                           {primaryRepoLink.label === "Devpost" ? (
                             <>
                               <DevpostIcon />
@@ -101,6 +144,7 @@ export const Projects = () => {
                       </Button>
                     )}
                   </DialogHeader>
+
                   <div className="space-y-6">
                     {/* Image Carousel */}
                     {project.images.length > 0 && (
@@ -109,7 +153,11 @@ export const Projects = () => {
                           {project.images.map((image, i) => (
                             <CarouselItem key={i}>
                               <div className="flex items-center justify-center bg-transparent rounded-lg overflow-hidden">
-                                <img src={image} alt={`${project.title} - Image ${i + 1}`} className="w-full h-auto max-h-[400px] object-contain" />
+                                <img
+                                  src={image}
+                                  alt={`${project.title} - Image ${i + 1}`}
+                                  className="w-full h-auto max-h-[400px] object-contain"
+                                />
                               </div>
                             </CarouselItem>
                           ))}
@@ -118,33 +166,44 @@ export const Projects = () => {
                         <CarouselNext className="right-2" />
                       </Carousel>
                     )}
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag, i) => (
-                        <span key={i} className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium">{tag}</span>
+                        <span
+                          key={i}
+                          className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium"
+                        >
+                          {tag}
+                        </span>
                       ))}
                     </div>
+
                     <p className="text-muted-foreground leading-relaxed">{project.overview}</p>
-                    
+
                     {project.details && project.details.length > 0 && (
                       <div className="space-y-2">
                         {project.details.map((detail, i) => (
-                          <p key={i} className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{detail}</p>
+                          <p
+                            key={i}
+                            className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed"
+                          >
+                            {detail}
+                          </p>
                         ))}
                       </div>
                     )}
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {project.externalLinks
                         ?.filter((link) => link.label !== "GitHub" && link.label !== primaryRepoLink?.label)
                         .map((link, i) => (
-                          <Button 
-                            key={i} 
-                            asChild 
-                            variant="outline"
-                            className="group"
-                          >
-                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                          <Button key={i} asChild variant="outline" className="group">
+                            <a
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2"
+                            >
                               {link.label === "Devpost" ? (
                                 <>
                                   <DevpostIcon />
@@ -160,7 +219,6 @@ export const Projects = () => {
                           </Button>
                         ))}
                     </div>
-
                   </div>
                 </DialogContent>
               </Dialog>

@@ -8,6 +8,7 @@ export interface Project {
   tags: string[];
   overview: string;
   details: string[];
+  category: "personal" | "school";
   externalLinks?: {
     label: string;
     url: string;
@@ -15,213 +16,54 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // ======================
+  // SCHOOL
+  // ======================
+
   {
-    id: "cradlewatch",
-    title: "CradleWatch",
-    description: "AI-powered baby monitor that detects emotion and alerts parents of distress while they're away.",
-    thumbnail: "/cradlewatch.png", // Replace with CradleWatch thumbnail
-    images: [
-      "/cradlewatch exploded.png",
-      "/cradlewatch poster.png"
-    ],
-    videos: ["/cradlewatch.mov"],
-    tags: [
-      "Raspberry Pi", "Python", "Flask", "OpenCV", "JavaScript", "HTML", "CSS",
-      "MediaPipe", "Twilio API", "PyTorch", "PCA9685"
-    ],
-    overview: "CradleWatch is an AI-powered infant monitoring system that detects emotional distress and responds in real time. Designed to address early signs of SIDS and improve caregiver awareness, it combines deep learning, facial tracking, and embedded hardware into a fully functional, responsive prototype.",
+    id: "terminal-snake",
+    title: "Terminal Snake Game",
+    description: "User-controlled terminal Snake game built with OOP and core memory management concepts in C/C++.",
+    thumbnail: "/snaketitle.png",
+    images: ["/snake.png", "/uml.png"], 
+    tags: ["C", "C++", "OOP", "Memory Management"],
+    overview: "A terminal-based Snake game focused on clean object-oriented structure and low-level programming fundamentals.",
     details: [
-      "Built by a cross-functional team at McMaster's Medical Engineering Design Team, CradleWatch blends computer vision with real-world hardware:",
-      "\nSoftware System:",
-      "  • Used MediaPipe Face Mesh to extract 3D facial landmarks, enabling analysis of emotion indicators such as eye aspect ratio and mouth shape.",
-      "  • Integrated a fine-tuned Vision Transformer (ViT) model via Hugging Face to classify emotional states like fear, sadness, and distress.",
-      "  • Built a lightweight web interface with Flask to serve live video streams, with OpenCV handling frame manipulation.",
-      "\nHardware Integration:",
-      "  • Ran the system on a Raspberry Pi to perform on-device, edge-based processing.",
-      "  • Used the I²C protocol to interface with environmental sensors.",
-      "  • Controlled a dual-axis pan-tilt camera mechanism using the PCA9685 PWM driver.",
-      "  • Sent automated alerts through Twilio SMS API when emotional distress was detected.",
-      "\nTeam Collaboration:",
-      "  • Coordinated with electrical and mechanical sub-teams to integrate servo controls, camera modules, and custom 3D-printed components.",
-      "  • Helped manage real-time data flow and debug cross-disciplinary integration between embedded systems and computer vision.",
-      "CradleWatch represents a significant step towards proactive infant care, combining advanced AI with practical hardware solutions to enhance caregiver awareness and response."
+      "• Implemented core game loop, input handling, collision rules, and score tracking.",
+      "• Used OOP to organize entities (snake, board, food) for maintainability and clarity.",
+      "• Applied memory management concepts while building and debugging runtime behavior."
     ],
-    externalLinks: [
-      {
-        label: "See More (Presentation)",
-        url: "/cradlewatch.pdf"
-      },
-      {
-        label: "GitHub",
-        url: "https://github.com/krishbhagirath/baby-monitoring-MED-T"
-      }
-    ]
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/oop-snake-game" }],
+    category: "school"
   },
+
   {
-    id: "deepfakedetector",
-    title: "DeepFakeDetector",
-    description: "Hybrid deepfake detection using CNNs, Vision Transformers, and frequency-domain (FFT) fusion model.",
-    thumbnail: "/macaisociety.png",
-    images: [
-      "/macaisociety.png",
-      "/flowchart.png"
-    ],
-    tags: [
-      "Python", "PyTorch", "Convolutional Neural Networks (CNNs)", "Vision Transformer", "FFT", "NumPy", "Pandas",
-      "MatPlotLib", "Next.js", "FastAPI"
-    ],
-    overview: "Overview: Working in a 6-member interdisciplinary team at the McMaster Artificial Intelligence Society to develop an interpretable system for detecting deepfake and AI-generated images.",
+    id: "programmable-logic-design",
+    title: "Programmable Logic Design",
+    description: "Design, simulation, and FPGA deployment of digital logic systems using gates, flip-flops, counters, and Verilog.",
+    thumbnail: "/programmable-logic.png",
+    images: ["/board.png", "/schematic.png", "/verilog.png", "/scope.png"],  
+    tags: ["Digital Logic", "Verilog", "Quartus", "FPGA", "DE10", "Flip-Flops", "Counters", "Oscilloscope"],
+    overview: "Digital logic labs spanning breadboard circuits through Verilog simulation and FPGA implementation.",
     details: [
-      "Designing a hybrid deepfake detection model, using:",
-      "  • CNNs for localized spatial artifacts and texture inconsistencies.",
-      "  • Vision Transformers for global semantic and contextual features.",
-      "  • FFT-based analysis for frequency-domain generative artifacts.",
-      "\nPersonal contributions are focused on improving model performance and robustness.",
-      "  • Contributing to model architecture design, creating lear visual architecture diagrams illustrating multi-stream feature extraction and learned feature fusion.",
-      "  • Fine-tuning Vision Transformer models on large-scale datasets (OpenFake, WildFake, Dragon datasets).",
-      "  • Experimenting with patch sizes, learning rates, and attention settings.",
-      "  • Implementing task-specific CNN classification heads to aggregate learned features into a single prediction output.",
-      "\nGoal: Building interpretability into the prediction pipeline.",
-      "  • Generating Grad-CAM heatmaps to highlight influential image regions.",
-      "  • Visualizing attention maps to explain model confidence scores.",
-      "\nNext Steps: Developing a full-stack web application for real-time inference.",
-      "  • Next.js frontend for image upload and results visualization.",
-      "  • FastAPI backend for model inference and API endpoints.",
+      "• Built and tested combinational logic with gates and breadboard-based circuits.",
+      "• Designed sequential systems including flip-flops and counters.",
+      "• Simulated designs in Quartus (Verilog + schematics) and deployed to DE10 FPGA hardware.",
+
+      "\nLab Reports:",
+      "• Lab 1: Implemented fundamental combinational logic by building all basic gates using only NANDs and measuring gate delay.",
+      "• Lab 2: Designed advanced combinational circuits, including K-map minimization, multiplexers, and 4-bit adders/subtractors using 2’s complement.",
+      "• Lab 3: Introduced Verilog HDL for modeling and simulation, implementing a decoder and a 7-segment display driver.",
+      "• Lab 4: Explored synchronous sequential logic with shift registers and counters, and measured EEPROM access time.",
     ],
-    externalLinks: [
-      {
-        label: "GitHub",
-        url: "https://github.com/McMasterAI-Society/DeepFakeDetector"
-      }
-    ]
-  },
-  {
-    id: "nbamatchpredictor",
-    title: "CourtML",
-    description: "Data-driven NBA match predictor that analyzes historical trends to forecast game outcomes.",
-    thumbnail: "/courtml.png", // Replace with CradleWatch thumbnail
-    images: [
-      "/courtml.png"
-    ],
-    tags: [
-      "Python", "React.js", "Sci-Kit Learn", "GitHub Actions", "Ridge Regression", "NBA API"
-    ],
-    overview: "Overview: End-to-end machine learning system for predicting NBA game outcomes using historical and live data.",
-    details: [
-      "Built a complete ML pipeline for NBA match prediction:",
-      "  • Handled data collection, preprocessing, feature engineering, and model training on 8 years of NBA data.",
-      "  • Automated evaluation using rolling-window validation on new season data.",
-      "\nDeveloped and trained predictive models:",
-      "  • Custom-trained a Ridge Regression model for baseline and comparative performance.",
-      "  • Experimented with tree-based models (Random Forest, XGBoost) to improve predictive accuracy.",
-      "\nDelivered predictions through a user-facing interface.",
-      "  • Built a React dashboard to display weekly predictions and accuracy metrics.",
-      "  • Integrated live NBA API data for up-to-date game information.",
-    ],
-    externalLinks: [
-      {
-        label: "GitHub",
-        url: "https://github.com/krishbhagirath/nba-match-predictor"
-      }
-    ]
-  },
-  {
-    id: "pawgress",
-    title: "PawGress",
-    description: "AI habit tracker using Cohere API to analyze behavior patterns and generate personalized improvement plans.",
-    thumbnail: "/pawgress1.jpg", // Replace with PawGress thumbnail
-    images: [
-      "/pawgress1.jpg",
-      "/pawgressUI.png",
-      "/pawgress2.jpg",
-      "/pawgress3.jpg",
-      "/pawgress4.jpg",
-      "/pawgress5.jpg",
-      "/pawgress6.jpg",
-      "/pawgress7.jpg",
-      "/pawgress8.jpg",
-      "/pawgress9.jpg",
-      "/pawgress10.jpg",
-      "/pawgress11.jpg",
-      "/pawgress12.jpg"
-    ],
-    tags: [
-      "React Native", "JavaScript", "TypeScript", "Cohere API",
-      "AsyncStorage", "Node.js", "Java"
-    ],
-    overview: "PawGress is a mobile app that gamifies habit tracking through Cohere's AI. Users can enter habits, receive personalized advice, and watch a cute dog avatar evolve as they make progress—turning self-improvement into an interactive and rewarding experience.",
-    details: [
-      "• Designed during DeltaHacks XI, PawGress was inspired by the struggle students face in maintaining healthy habits amidst the freedoms of university life. Unlike traditional to-do lists, PawGress uses natural language processing to analyze daily entries, provide feedback, and suggest improved behavior strategies.",
-      "• The app was built in React Native for cross-platform compatibility. It integrates the Cohere API for personalized habit coaching and uses AsyncStorage to manage local user state. A dynamic dog avatar represents habit progression, reinforcing positive behaviors through gamification.",
-      "• Initial backend integration used Java and Node.js to connect future database functionality via Supabase. Users can eventually interact with suggested activities and celebrate achievements with a broader community."
-    ],
-    externalLinks: [
-      {
-        label: "GitHub",
-        url: "https://github.com/krishbhagirath"
-      },
-      {
-        label: "Devpost",
-        url: "https://devpost.com/software/pawgress-t78w9h"
-      }
-    ]
-  },
-  {
-    id: "portfolio",
-    title: "Personal Portfolio",
-    description: "Responsive React + TypeScript portfolio showcasing my projects and experience.",
-    thumbnail: "/portfolio-home.png",
-    images: ["/portfolio-home.png"],
-    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Radix UI"],
-    overview: "A fast, accessible portfolio built with React and Tailwind CSS to highlight my technical work and design sense.",
-    details: [
-      "• Built with React 18, TypeScript, and Vite",
-      "• Custom UI using Radix primitives and Tailwind",
-      "• Responsive layouts with smooth animations",
-      "• Deployed via Vercel with GitHub version control",
-      "• Next: Add RAG AI chatbot and performance tuning to improve user experience"
-    ],
-    externalLinks: [
-      {
-        label: "GitHub",
-        url: "https://github.com/krishbhagirath/portfolio-website"
-      }
-    ]
-  },
-  {
-    id: "intellipark",
-    title: "IntelliPark",
-    description: "Smart parking system that detects open spots and guides drivers automatically.",
-    thumbnail: "/parkinggarage.png", // Replace with IntelliPark thumbnail
-    images: ["/parkinggarage.png"],
-    tags: [
-      "Arduino", "C", "Robotics", "Circuitry", "LCD Displays",
-      "IR Sensors", "Embedded Systems"
-    ],
-    overview: "IntelliPark is a smart parking prototype designed to streamline vehicle parking through automated feedback and real-time availability detection. Built using Arduino and ultrasonic sensors, it provides a scalable foundation for intelligent parking systems in both public and private spaces.",
-    details: [
-      "• Developed as part of the UCMAS Robotics Innovation Competition, IntelliPark was awarded first place for its practical application and technical execution.",
-      "• Used Arduino Uno paired with ultrasonic sensors to detect vehicle presence and relay real-time availability with an LCD (Liquid Crystal Display).",
-      "• Controlled servo motors to simulate gate movement, mimicking an entry/exit barrier system responsive to parking spot status.",
-      "• The system was powered through modular wiring and basic PCB design to keep the architecture simple and replicable.",
-      "\nInnovation to Enterprise:",
-      "While initially a technical proof-of-concept, IntelliPark quickly evolved into a complete business solution. Inspired by its performance and potential, I extended the prototype into a full-scale startup idea for a DECA Entrepreneurship competition.",
-      "  • Transformed the core project into a marketable business concept, integrating branding, customer segmentation, and financial projections into a full business plan.",
-      "  • Proposed a long-term scalable solution for institutions and municipalities using machine learning for traffic prediction, mobile integration, and cloud-based dashboards.",
-      "  • The project underscored how hands-on technical innovation can serve as a springboard for entrepreneurship and social impact."
-    ],
-    externalLinks: [
-      {
-        label: "View DECA Business Report",
-        url: "/decareport.pdf"
-      }
-    ]
+    externalLinks: [{label: "Read Full Lab Reports", url: "https://drive.google.com/drive/folders/1f5j9WMxIzEll9RHo5fb3HrEXittdcKEK?usp=drive_link" }],
+    category: "school"
   },
   {
     id: "airport",
     title: "Autonomous Airport System",
     description: "CAD-designed system with Python automation for luggage handling and passenger data management.",
-    thumbnail: "/luggageCAD.png", // Replace with Airport System thumbnail
+    thumbnail: "/luggageCAD.png",
     images: [
       "/luggageCAD.png",
       "/airport1.png",
@@ -251,13 +93,14 @@ export const projects: Project[] = [
         label: "Read Full Project Breakdown",
         url: "https://bhagirak.wixsite.com/portfolio1p13/portfolio"
       }
-    ]
+    ],
+    category: "school"
   },
   {
     id: "clipcall",
     title: "ClipCall",
     description: "Cane attachment designed for an Usher syndrome client to enable hands-free phone use.",
-    thumbnail: "/clipcall-main.png", // Replace with ClipCall thumbnail
+    thumbnail: "/clipcall-main.png",
     images: [
       "/clipcall.png",
       "/clipcall-prototypes.png",
@@ -286,6 +129,177 @@ export const projects: Project[] = [
         label: "Read Full Project Breakdown",
         url: "https://bhagirak.wixsite.com/portfolio1p13/copy-of-project-1"
       }
-    ]
+    ],
+    category: "school"
+  },
+
+  // ======================
+  // PERSONAL / CLUB
+  // ======================
+
+  {
+    id: "cradlewatch",
+    title: "CradleWatch",
+    description: "AI-powered baby monitor that detects emotion and alerts parents of distress while they're away.",
+    thumbnail: "/cradlewatch.png",
+    images: ["/cradlewatch exploded.png", "/cradlewatch poster.png"],
+    videos: ["/cradlewatch.mov"],
+    tags: [
+      "Raspberry Pi", "Python", "Flask", "OpenCV", "JavaScript", "HTML", "CSS",
+      "MediaPipe", "Twilio API", "PyTorch", "PCA9685"
+    ],
+    overview: "CradleWatch is an AI-powered infant monitoring system that detects emotional distress and responds in real time. Designed to address early signs of SIDS and improve caregiver awareness, it combines deep learning, facial tracking, and embedded hardware into a fully functional, responsive prototype.",
+    details: [
+      "Built by a cross-functional team at McMaster's Medical Engineering Design Team, CradleWatch blends computer vision with real-world hardware:",
+      "\nSoftware System:",
+      "  • Used MediaPipe Face Mesh to extract 3D facial landmarks, enabling analysis of emotion indicators such as eye aspect ratio and mouth shape.",
+      "  • Integrated a fine-tuned Vision Transformer (ViT) model via Hugging Face to classify emotional states like fear, sadness, and distress.",
+      "  • Built a lightweight web interface with Flask to serve live video streams, with OpenCV handling frame manipulation.",
+      "\nHardware Integration:",
+      "  • Ran the system on a Raspberry Pi to perform on-device, edge-based processing.",
+      "  • Used the I²C protocol to interface with environmental sensors.",
+      "  • Controlled a dual-axis pan-tilt camera mechanism using the PCA9685 PWM driver.",
+      "  • Sent automated alerts through Twilio SMS API when emotional distress was detected.",
+      "\nTeam Collaboration:",
+      "  • Coordinated with electrical and mechanical sub-teams to integrate servo controls, camera modules, and custom 3D-printed components.",
+      "  • Helped manage real-time data flow and debug cross-disciplinary integration between embedded systems and computer vision.",
+      "CradleWatch represents a significant step towards proactive infant care, combining advanced AI with practical hardware solutions to enhance caregiver awareness and response."
+    ],
+    externalLinks: [
+      { label: "See More (Presentation)", url: "/cradlewatch.pdf" },
+      { label: "GitHub", url: "https://github.com/krishbhagirath/baby-monitoring-MED-T" }
+    ],
+    category: "personal"
+  },
+
+  {
+    id: "deepfakedetector",
+    title: "DeepFakeDetector",
+    description: "Hybrid deepfake detection using CNNs, Vision Transformers, and frequency-domain (FFT) fusion model.",
+    thumbnail: "/macaisociety.png",
+    images: ["/macaisociety.png", "/flowchart.png"],
+    tags: [
+      "Python", "PyTorch", "Convolutional Neural Networks (CNNs)", "Vision Transformer", "FFT", "NumPy", "Pandas",
+      "MatPlotLib", "Next.js", "FastAPI"
+    ],
+    overview: "Overview: Working in a 6-member interdisciplinary team at the McMaster Artificial Intelligence Society to develop an interpretable system for detecting deepfake and AI-generated images.",
+    details: [
+      "Designing a hybrid deepfake detection model, using:",
+      "  • CNNs for localized spatial artifacts and texture inconsistencies.",
+      "  • Vision Transformers for global semantic and contextual features.",
+      "  • FFT-based analysis for frequency-domain generative artifacts.",
+      "\nPersonal contributions are focused on improving model performance and robustness.",
+      "  • Contributing to model architecture design, creating lear visual architecture diagrams illustrating multi-stream feature extraction and learned feature fusion.",
+      "  • Fine-tuning Vision Transformer models on large-scale datasets (OpenFake, WildFake, Dragon datasets).",
+      "  • Experimenting with patch sizes, learning rates, and attention settings.",
+      "  • Implementing task-specific CNN classification heads to aggregate learned features into a single prediction output.",
+      "\nGoal: Building interpretability into the prediction pipeline.",
+      "  • Generating Grad-CAM heatmaps to highlight influential image regions.",
+      "  • Visualizing attention maps to explain model confidence scores.",
+      "\nNext Steps: Developing a full-stack web application for real-time inference.",
+      "  • Next.js frontend for image upload and results visualization.",
+      "  • FastAPI backend for model inference and API endpoints."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/McMasterAI-Society/DeepFakeDetector" }],
+    category: "personal"
+  },
+
+  {
+    id: "nbamatchpredictor",
+    title: "CourtML",
+    description: "Data-driven NBA match predictor that analyzes historical trends to forecast game outcomes.",
+    thumbnail: "/courtml.png",
+    images: ["/courtml.png"],
+    tags: ["Python", "React.js", "Sci-Kit Learn", "GitHub Actions", "Ridge Regression", "NBA API"],
+    overview: "Overview: End-to-end machine learning system for predicting NBA game outcomes using historical and live data.",
+    details: [
+      "Built a complete ML pipeline for NBA match prediction:",
+      "  • Handled data collection, preprocessing, feature engineering, and model training on 8 years of NBA data.",
+      "  • Automated evaluation using rolling-window validation on new season data.",
+      "\nDeveloped and trained predictive models:",
+      "  • Custom-trained a Ridge Regression model for baseline and comparative performance.",
+      "  • Experimented with tree-based models (Random Forest, XGBoost) to improve predictive accuracy.",
+      "\nDelivered predictions through a user-facing interface.",
+      "  • Built a React dashboard to display weekly predictions and accuracy metrics.",
+      "  • Integrated live NBA API data for up-to-date game information."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/nba-match-predictor" }],
+    category: "personal"
+  },
+
+  {
+    id: "pawgress",
+    title: "PawGress",
+    description: "AI habit tracker using Cohere API to analyze behavior patterns and generate personalized improvement plans.",
+    thumbnail: "/pawgress1.jpg",
+    images: [
+      "/pawgress1.jpg",
+      "/pawgressUI.png",
+      "/pawgress2.jpg",
+      "/pawgress3.jpg",
+      "/pawgress4.jpg",
+      "/pawgress5.jpg",
+      "/pawgress6.jpg",
+      "/pawgress7.jpg",
+      "/pawgress8.jpg",
+      "/pawgress9.jpg",
+      "/pawgress10.jpg",
+      "/pawgress11.jpg",
+      "/pawgress12.jpg"
+    ],
+    tags: ["React Native", "JavaScript", "TypeScript", "Cohere API", "AsyncStorage", "Node.js", "Java"],
+    overview: "PawGress is a mobile app that gamifies habit tracking through Cohere's AI. Users can enter habits, receive personalized advice, and watch a cute dog avatar evolve as they make progress—turning self-improvement into an interactive and rewarding experience.",
+    details: [
+      "• Designed during DeltaHacks XI, PawGress was inspired by the struggle students face in maintaining healthy habits amidst the freedoms of university life. Unlike traditional to-do lists, PawGress uses natural language processing to analyze daily entries, provide feedback, and suggest improved behavior strategies.",
+      "• The app was built in React Native for cross-platform compatibility. It integrates the Cohere API for personalized habit coaching and uses AsyncStorage to manage local user state. A dynamic dog avatar represents habit progression, reinforcing positive behaviors through gamification.",
+      "• Initial backend integration used Java and Node.js to connect future database functionality via Supabase. Users can eventually interact with suggested activities and celebrate achievements with a broader community."
+    ],
+    externalLinks: [
+      { label: "GitHub", url: "https://github.com/krishbhagirath" },
+      { label: "Devpost", url: "https://devpost.com/software/pawgress-t78w9h" }
+    ],
+    category: "personal"
+  },
+
+  {
+    id: "portfolio",
+    title: "Personal Portfolio",
+    description: "Responsive React + TypeScript portfolio showcasing my projects and experience.",
+    thumbnail: "/portfolio-home.png",
+    images: ["/portfolio-home.png"],
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Radix UI"],
+    overview: "A fast, accessible portfolio built with React and Tailwind CSS to highlight my technical work and design sense.",
+    details: [
+      "• Built with React 18, TypeScript, and Vite",
+      "• Custom UI using Radix primitives and Tailwind",
+      "• Responsive layouts with smooth animations",
+      "• Deployed via Vercel with GitHub version control",
+      "• Next: Add RAG AI chatbot and performance tuning to improve user experience"
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/portfolio-website" }],
+    category: "personal"
+  },
+
+  {
+    id: "intellipark",
+    title: "IntelliPark",
+    description: "Smart parking system that detects open spots and guides drivers automatically.",
+    thumbnail: "/parkinggarage.png",
+    images: ["/parkinggarage.png"],
+    tags: ["Arduino", "C", "Robotics", "Circuitry", "LCD Displays", "IR Sensors", "Embedded Systems"],
+    overview: "IntelliPark is a smart parking prototype designed to streamline vehicle parking through automated feedback and real-time availability detection. Built using Arduino and ultrasonic sensors, it provides a scalable foundation for intelligent parking systems in both public and private spaces.",
+    details: [
+      "• Developed as part of the UCMAS Robotics Innovation Competition, IntelliPark was awarded first place for its practical application and technical execution.",
+      "• Used Arduino Uno paired with ultrasonic sensors to detect vehicle presence and relay real-time availability with an LCD (Liquid Crystal Display).",
+      "• Controlled servo motors to simulate gate movement, mimicking an entry/exit barrier system responsive to parking spot status.",
+      "• The system was powered through modular wiring and basic PCB design to keep the architecture simple and replicable.",
+      "\nInnovation to Enterprise:",
+      "While initially a technical proof-of-concept, IntelliPark quickly evolved into a complete business solution. Inspired by its performance and potential, I extended the prototype into a full-scale startup idea for a DECA Entrepreneurship competition.",
+      "  • Transformed the core project into a marketable business concept, integrating branding, customer segmentation, and financial projections into a full business plan.",
+      "  • Proposed a long-term scalable solution for institutions and municipalities using machine learning for traffic prediction, mobile integration, and cloud-based dashboards.",
+      "  • The project underscored how hands-on technical innovation can serve as a springboard for entrepreneurship and social impact."
+    ],
+    externalLinks: [{ label: "View DECA Business Report", url: "/decareport.pdf" }],
+    category: "personal"
   }
 ];

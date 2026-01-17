@@ -25,7 +25,7 @@ export const projects: Project[] = [
     title: "Terminal Snake Game",
     description: "User-controlled terminal Snake game built with OOP and core memory management concepts in C/C++.",
     thumbnail: "/snaketitle.png",
-    images: ["/snake.png", "/uml.png"], 
+    images: ["/snake.png", "/uml.png"],
     tags: ["C", "C++", "OOP", "Memory Management"],
     overview: "A terminal-based Snake game focused on clean object-oriented structure and low-level programming fundamentals.",
     details: [
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: "Programmable Logic Design",
     description: "Design, simulation, and FPGA deployment of digital logic systems using gates, flip-flops, counters, and Verilog.",
     thumbnail: "/programmable-logic.png",
-    images: ["/board.png", "/schematic.png", "/verilog.png", "/scope.png"],  
+    images: ["/board.png", "/schematic.png", "/verilog.png", "/scope.png"],
     tags: ["Digital Logic", "Verilog", "Quartus", "FPGA", "DE10", "Flip-Flops", "Counters", "Oscilloscope"],
     overview: "Digital logic labs spanning breadboard circuits through Verilog simulation and FPGA implementation.",
     details: [
@@ -56,7 +56,7 @@ export const projects: Project[] = [
       "• Lab 3: Introduced Verilog HDL for modeling and simulation, implementing a decoder and a 7-segment display driver.",
       "• Lab 4: Explored synchronous sequential logic with shift registers and counters, and measured EEPROM access time.",
     ],
-    externalLinks: [{label: "Read Full Lab Reports", url: "https://drive.google.com/drive/folders/1f5j9WMxIzEll9RHo5fb3HrEXittdcKEK?usp=drive_link" }],
+    externalLinks: [{ label: "Read Full Lab Reports", url: "https://drive.google.com/drive/folders/1f5j9WMxIzEll9RHo5fb3HrEXittdcKEK?usp=drive_link" }],
     category: "school"
   },
   {
@@ -201,6 +201,35 @@ export const projects: Project[] = [
       "  • FastAPI backend for model inference and API endpoints."
     ],
     externalLinks: [{ label: "GitHub", url: "https://github.com/McMasterAI-Society/DeepFakeDetector" }],
+    category: "personal"
+  },
+
+  {
+    id: "hiready",
+    title: "Hiready",
+    description: "An interview preparation agent that simulates a real interview and gives you live feedback on REAL interview questions.",
+    thumbnail: "/hireadyhome.png",
+    images: [
+      "/hireadyhome.png",
+      "/hireadypreinterview.png",
+      "/hireadynemo.png",
+      "/hireadyreport1.png",
+      "/hireadyreport2.png"
+    ],
+    tags: ["C++", "Next.js", "React", "Google Gemini", "ElevenLabs API", "Presage SDK", "OpenCV"],
+    overview: "Hiready is a comprehensive AI mock interviewer designed to simulate real-world interview scenarios, ranging from behavioral inquiries to deep technical questions. It uses the **Presage C++ SDK** to detect physiological stress levels and emotional cues via webcam, while simultaneously transcribing spoken conversation. This data is processed by **Google's Gemini** to generate a detailed, actionable feedback report on both delivery composure and answer content.",
+    details: [
+      "• Built a real-time AI interviewer using C++ and Next.js.",
+      "• Integrated Google Gemini for intelligent conversation and feedback.",
+      "• Used Presage SDK to analyze physiological stress signals during the interview.",
+      "• Implemented ElevenLabs API for lifelike voice interaction.",
+      "• Designed a comprehensive feedback system to help users improve their interview skills."
+    ],
+    externalLinks: [
+      { label: "GitHub", url: "https://github.com/krishbhagirath/smart-interviewer" },
+      { label: "YouTube Demo", url: "https://www.youtube.com/watch?v=3doCmEJBar0" },
+      { label: "Devpost", url: "https://devpost.com/software/nemo-0y1m7h" }
+    ],
     category: "personal"
   },
 

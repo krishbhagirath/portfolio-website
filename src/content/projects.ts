@@ -205,6 +205,37 @@ export const projects: Project[] = [
   },
 
   {
+    id: "gitcheck",
+    title: ".gitCheck",
+    description: "Automated judging engine that cross-references project claims with GitHub data to validate authenticity.",
+    thumbnail: "/gitchecklogo.png",
+    images: [
+      "/gitchecklogo.png",
+      "https://www.youtube.com/watch?v=PPvSAhMUhZY",
+      "/gitcheckprojects.png",
+      "/gitcheckSAB.png",
+      "/gitcheckAnalysis.png",
+      "/gitcheckTU.png",
+      "/gitcheckFlag.png"
+    ],
+    tags: ["LangChain", "LangGraph", "Gemini Pro", "FastAPI", "Next.js 15", "PyGithub", "BeautifulSoup4"],
+    overview: ".gitCheck is an AI-driven integrity verification engine designed to automate hackathon judging. It employs a multi-agent orchestration layer to cross-reference Devpost submissions with real-time GitHub activity, ensuring projects are original and built within the competition window.",
+    details: [
+      "• Multi-Agent Orchestration: Architected a system using LangChain and LangGraph to coordinate specialized AI agents for deep semantic analysis of code and documentation.",
+      "• Server-Side Analysis: Integrated GitHub REST API for real-time repository auditing of commits, languages, and file trees without cloning overhead.",
+      "• Dual-Verification System: Cross-references Devpost feature claims with GitHub commit timelines to ensure chronological accuracy and implementation validity.",
+      "• Feature Investigator: Built a Google Gemini Pro agent to perform AI-driven code-to-documentation analysis, identifying 'Weighted Claims' vs secondary utilities.",
+      "• Scalable Backend: Engineered a high-volume judging pipeline using Next.js 15 and Python/FastAPI, featuring a secure multi-tenant dashboard with Auth0 and Prisma."
+    ],
+    externalLinks: [
+      { label: "GitHub", url: "https://github.com/krishbhagirath/GitCheck" },
+      { label: "Devpost", url: "https://devpost.com/software/gitcheck" },
+      { label: "Live Site", url: "https://gdg-gitcheck.vercel.app" }
+    ],
+    category: "personal"
+  },
+
+  {
     id: "hiready",
     title: "Hiready",
     description: "An interview preparation agent that simulates a real interview and gives you live feedback on REAL interview questions.",
@@ -217,7 +248,7 @@ export const projects: Project[] = [
       "/hireadyreport2.png"
     ],
     tags: ["C++", "Next.js", "React", "Google Gemini", "ElevenLabs API", "Presage SDK", "OpenCV"],
-    overview: "Hiready is a comprehensive AI mock interviewer designed to simulate real-world interview scenarios, ranging from behavioral inquiries to deep technical questions. It uses the **Presage C++ SDK** to detect physiological stress levels and emotional cues via webcam, while simultaneously transcribing spoken conversation. This data is processed by **Google's Gemini** to generate a detailed, actionable feedback report on both delivery composure and answer content.",
+    overview: "Hiready is a comprehensive AI mock interviewer designed to simulate real-world interview scenarios, ranging from behavioral inquiries to deep technical questions. It uses the Presage C++ SDK to detect physiological stress levels and emotional cues via webcam, while simultaneously transcribing spoken conversation. This data is processed by Google's Gemini to generate a detailed, actionable feedback report on both delivery composure and answer content.",
     details: [
       "• Built a real-time AI interviewer using C++ and Next.js.",
       "• Integrated Google Gemini for intelligent conversation and feedback.",
@@ -236,23 +267,22 @@ export const projects: Project[] = [
   {
     id: "nbamatchpredictor",
     title: "CourtML",
-    description: "Data-driven NBA match predictor that analyzes historical trends to forecast game outcomes.",
+    description: "Production-ready machine learning system predicting NBA game outcomes with high precision via a custom gradient boosting pipeline.",
     thumbnail: "/courtml.png",
     images: ["/courtml.png"],
-    tags: ["Python", "React.js", "Sci-Kit Learn", "GitHub Actions", "Ridge Regression", "NBA API"],
-    overview: "Overview: End-to-end machine learning system for predicting NBA game outcomes using historical and live data.",
+    tags: ["Python", "React.js", "Sci-Kit Learn", "GitHub Actions", "HistGradientBoostingClassifier", "NBA API", "Chart.js", "Vercel"],
+    overview: "CourtML is a production-grade NBA match predictor that leverages a HistGradientBoostingClassifier (V5) trained on over 17,000 game records spanning 8+ seasons to deliver sub-second win probabilities.",
     details: [
-      "Built a complete ML pipeline for NBA match prediction:",
-      "  • Handled data collection, preprocessing, feature engineering, and model training on 8 years of NBA data.",
-      "  • Automated evaluation using rolling-window validation on new season data.",
-      "\nDeveloped and trained predictive models:",
-      "  • Custom-trained a Ridge Regression model for baseline and comparative performance.",
-      "  • Experimented with tree-based models (Random Forest, XGBoost) to improve predictive accuracy.",
-      "\nDelivered predictions through a user-facing interface.",
-      "  • Built a React dashboard to display weekly predictions and accuracy metrics.",
-      "  • Integrated live NBA API data for up-to-date game information."
+      "• Automated Inference Pipeline: Robust system triggered daily at 6 AM ET to generate fresh win probabilities and matchup data.",
+      "• Matchup Merge Architecture: Custom data join aligning 10-game rolling averages for home and away teams, evaluating historical form vs. head-to-head dynamics.",
+      "• Visual Explainability: Integrated react-chartjs-2 to contrast team metrics side-by-side, highlighting specific statistical edges (e.g., Four Factors).",
+      "• Custom Tooltip Engine: Logic-driven interface calculating exact advantage percentages for leading teams in any category.",
+      "• Premium UI/UX: High-performance dashboard utilizing CSS Modules for scoped styling and an AnimatedBackground.js system for dynamic, non-deterministic visuals."
     ],
-    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/nba-match-predictor" }],
+    externalLinks: [
+      { label: "GitHub", url: "https://github.com/krishbhagirath/nba-match-predictor" },
+      { label: "Live Site", url: "https://courtml.vercel.app/" }
+    ],
     category: "personal"
   },
 

@@ -146,21 +146,37 @@ export const Projects = () => {
                   </DialogHeader>
 
                   <div className="space-y-6">
-                    {/* Image Carousel */}
+                    {/* Image/Video Carousel */}
                     {project.images.length > 0 && (
                       <Carousel className="w-full">
                         <CarouselContent>
-                          {project.images.map((image, i) => (
-                            <CarouselItem key={i}>
-                              <div className="flex items-center justify-center bg-transparent rounded-lg overflow-hidden">
-                                <img
-                                  src={image}
-                                  alt={`${project.title} - Image ${i + 1}`}
-                                  className="w-full h-auto max-h-[400px] object-contain"
-                                />
-                              </div>
-                            </CarouselItem>
-                          ))}
+                          {project.images.map((media, i) => {
+                            const isYoutube = media.includes("youtube.com") || media.includes("youtu.be");
+                            return (
+                              <CarouselItem key={i}>
+                                <div className="flex items-center justify-center bg-transparent rounded-lg overflow-hidden">
+                                  {isYoutube ? (
+                                    <div className="relative w-full aspect-video">
+                                      <iframe
+                                        className="absolute top-0 left-0 w-full h-full rounded-lg"
+                                        src={media.replace("watch?v=", "embed/")}
+                                        title={`${project.title} Video ${i + 1}`}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                      ></iframe>
+                                    </div>
+                                  ) : (
+                                    <img
+                                      src={media}
+                                      alt={`${project.title} - Image ${i + 1}`}
+                                      className="w-full h-auto max-h-[400px] object-contain"
+                                    />
+                                  )}
+                                </div>
+                              </CarouselItem>
+                            );
+                          })}
                         </CarouselContent>
                         <CarouselPrevious className="left-2" />
                         <CarouselNext className="right-2" />

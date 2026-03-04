@@ -351,7 +351,6 @@ export const projects: Project[] = [
       "• Developed as part of the UCMAS Robotics Innovation Competition, IntelliPark was awarded first place for its practical application and technical execution.",
       "• Used Arduino Uno paired with ultrasonic sensors to detect vehicle presence and relay real-time availability with an LCD (Liquid Crystal Display).",
       "• Controlled servo motors to simulate gate movement, mimicking an entry/exit barrier system responsive to parking spot status.",
-      "• The system was powered through modular wiring and basic PCB design to keep the architecture simple and replicable.",
       "\nInnovation to Enterprise:",
       "While initially a technical proof-of-concept, IntelliPark quickly evolved into a complete business solution. Inspired by its performance and potential, I extended the prototype into a full-scale startup idea for a DECA Entrepreneurship competition.",
       "  • Transformed the core project into a marketable business concept, integrating branding, customer segmentation, and financial projections into a full business plan.",

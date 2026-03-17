@@ -80,7 +80,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Laravel",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png"
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
   },
   {
     name: "Postman",

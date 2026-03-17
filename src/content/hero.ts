@@ -15,5 +15,5 @@ export const hero = {
     github: "https://github.com/krishbhagirath",
     linkedin: "https://ca.linkedin.com/in/krish-bhagirath"
   },
-  resumeUrl: "/Krish Bhagirath - Resume.pdf"
+  resumeUrl: "/Krish-Bhagirath-Resume.pdf"
 };

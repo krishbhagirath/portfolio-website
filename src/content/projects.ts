@@ -9,6 +9,7 @@ export interface Project {
   overview: string;
   details: string[];
   category: "personal" | "school";
+  badge?: string;
   externalLinks?: {
     label: string;
     url: string;
@@ -201,6 +202,28 @@ export const projects: Project[] = [
       "  • FastAPI backend for model inference and API endpoints."
     ],
     externalLinks: [{ label: "GitHub", url: "https://github.com/McMasterAI-Society/DeepFakeDetector" }],
+    category: "personal"
+  },
+
+  {
+    id: "valid",
+    title: "VALID",
+    description: "Clinical AI tool to reduce unnecessary CT scans",
+    thumbnail: "",
+    images: [],
+    tags: ["Python", "Pandas", "NumPy", "scikit-learn", "PyTorch", "XGBoost", "ClinicalBERT"],
+    badge: "CUCAI Winner 2026",
+    overview: "VALID (Verified AI for Limited Inefficient Diagnostics) is an AI-powered clinical decision support tool that predicts CT scan necessity at emergency triage by combining NLP on clinical notes with patient vitals in a multimodal ML pipeline.",
+    details: [
+      "🏆 Won Responsible AI Award at CUCAI 2026",
+      "• Integrates unstructured clinical text (ClinicalBERT) with structured patient vitals",
+      "• Ensemble model (MLP, Random Forest, XGBoost) for robust and safe predictions",
+      "• Achieved ~88% recall and ~91% precision on CT scan necessity classification",
+      "• Optimized to minimize false negatives and prioritize patient safety",
+      "• Reduces unnecessary imaging, lowering radiation exposure and healthcare costs",
+      "• Deployable as a real-time API for integration into hospital workflows"
+    ],
+    externalLinks: [{ label: "Paper", url: "https://drive.google.com/file/d/1ayrYl8K3ZTCnZo7HGaIv4jEMrXu4T92v/view" }],
     category: "personal"
   },
 

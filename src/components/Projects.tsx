@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight, Github, FileText } from "lucide-react";
 import { projects } from "@/content/projects";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -59,7 +59,8 @@ export const Projects = () => {
           {filteredProjects.map((project) => {
             const githubLink = project.externalLinks?.find((link) => link.label === "GitHub");
             const devpostLink = project.externalLinks?.find((link) => link.label === "Devpost");
-            const primaryRepoLink = project.id === "pawgress" ? devpostLink ?? githubLink : githubLink;
+            const paperLink = project.externalLinks?.find((link) => link.label === "Paper");
+            const primaryRepoLink = project.id === "pawgress" ? devpostLink ?? githubLink : paperLink ?? githubLink;
 
             return (
               <Dialog key={project.id}>
@@ -76,10 +77,18 @@ export const Projects = () => {
 
                     {/* Content Section - Dark Gray Background */}
                     <div className="flex flex-col flex-1 bg-secondary p-6 rounded-b-lg">
-                      {/* Title */}
-                      <h3 className="text-xl font-light mb-3 text-foreground leading-tight">
-                        {project.title}
-                      </h3>
+                      {/* Title + Badge */}
+                      <div className="flex items-center gap-2 mb-3">
+                        <h3 className="text-xl font-light text-foreground leading-tight">
+                          {project.title}
+                        </h3>
+                        {project.badge && (
+                          <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded bg-amber-500/15 text-amber-400 border border-amber-500/30 whitespace-nowrap">
+                            {project.badge}
+                          </span>
+                        )}
+                      </div>
+
 
                       {/* Description */}
                       <p className="text-sm text-muted-foreground font-light mb-6 flex-1 leading-relaxed">
@@ -101,6 +110,8 @@ export const Projects = () => {
                           >
                             {primaryRepoLink.label === "Devpost" ? (
                               <DevpostIcon />
+                            ) : primaryRepoLink.label === "Paper" ? (
+                              <FileText className="w-5 h-5 text-foreground" />
                             ) : (
                               <Github className="w-5 h-5 text-foreground" />
                             )}
@@ -133,6 +144,11 @@ export const Projects = () => {
                             <>
                               <DevpostIcon />
                               <span>Devpost</span>
+                            </>
+                          ) : primaryRepoLink.label === "Paper" ? (
+                            <>
+                              <FileText className="h-4 w-4" />
+                              <span>Paper</span>
                             </>
                           ) : (
                             <>

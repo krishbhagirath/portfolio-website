@@ -177,7 +177,7 @@ export const projects: Project[] = [
     id: "deepfakedetector",
     title: "DeepFakeDetector",
     description: "Hybrid deepfake detection using CNNs, Vision Transformers, and frequency-domain (FFT) fusion model.",
-    thumbnail: "/macaisociety.png",
+    thumbnail: "/dfd.png",
     images: ["/macaisociety.png", "/flowchart.png"],
     tags: [
       "Python", "PyTorch", "Convolutional Neural Networks (CNNs)", "Vision Transformer", "FFT", "NumPy", "Pandas",
@@ -209,7 +209,7 @@ export const projects: Project[] = [
     id: "valid",
     title: "VALID",
     description: "Clinical AI tool to reduce unnecessary CT scans",
-    thumbnail: "/valid_interface.png",
+    thumbnail: "/VALID.png",
     images: ["/valid_interface.png", "/valid_architecture.png", "/valid_scan_unnecessary.png", "/modelComparison.png"],
     tags: ["Python", "Pandas", "NumPy", "scikit-learn", "PyTorch", "XGBoost", "ClinicalBERT"],
     badge: "CUCAI Winner 2026",

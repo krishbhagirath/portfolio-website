@@ -205,7 +205,6 @@ export const ChatBot = () => {
               <AssistantAvatar />
               <div className="min-w-0">
                 <p className="truncate text-sm font-medium text-foreground">Krish's AI Assistant</p>
-                <p className="truncate text-xs text-foreground/50">Portfolio context enabled</p>
               </div>
             </div>
           </div>

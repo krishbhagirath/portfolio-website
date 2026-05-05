@@ -21,6 +21,13 @@ const initialMessages: UIMessage[] = [
   },
 ];
 
+const suggestedQuestions = [
+  'Can you summarize this portfolio?',
+  'What is Krish working on?',
+  'What experience does Krish have?',
+  'What are Krish’s strongest skills?',
+];
+
 const getMessageText = (message: UIMessage) =>
   message.parts.map((part) => (part.type === 'text' ? part.text : '')).join('');
 
@@ -162,6 +169,7 @@ export const ChatBot = () => {
 
   const isLoading = status === 'submitted' || status === 'streaming';
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const showSuggestedQuestions = messages.length === initialMessages.length && !isLoading;
 
   // Keep scrolling inside the chat panel so the page itself does not jump.
   useEffect(() => {
@@ -176,10 +184,8 @@ export const ChatBot = () => {
     });
   }, [messages, isLoading]);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const text = input.trim();
+  const sendQuestion = async (question: string) => {
+    const text = question.trim();
     if (!text || isLoading) {
       return;
     }
@@ -187,6 +193,11 @@ export const ChatBot = () => {
     clearError();
     setInput('');
     await sendMessage({ text });
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await sendQuestion(input);
   };
 
   return (
@@ -241,6 +252,22 @@ export const ChatBot = () => {
                 {message.role === 'user' && <UserAvatar />}
               </div>
             ))}
+
+            {showSuggestedQuestions && (
+              <div className="ml-[52px] flex flex-wrap gap-2">
+                {suggestedQuestions.map((question) => (
+                  <button
+                    key={question}
+                    type="button"
+                    onClick={() => sendQuestion(question)}
+                    className="rounded-lg border border-border/60 bg-card px-3 py-2 text-left text-xs sm:text-sm font-light text-foreground/70 shadow-sm transition-all hover:border-border hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                    disabled={isLoading}
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {isLoading && messages[messages.length - 1]?.role === 'user' && (
               <div className="flex gap-4 justify-start">

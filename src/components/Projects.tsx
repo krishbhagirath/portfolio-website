@@ -168,6 +168,7 @@ export const Projects = () => {
                         <CarouselContent>
                           {project.images.map((media, i) => {
                             const isYoutube = media.includes("youtube.com") || media.includes("youtu.be");
+                            const isVideo = /\.(mp4|webm|mov)$/i.test(media);
                             return (
                               <CarouselItem key={i}>
                                 <div className="flex items-center justify-center bg-transparent rounded-lg overflow-hidden">
@@ -181,6 +182,16 @@ export const Projects = () => {
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
                                       ></iframe>
+                                    </div>
+                                  ) : isVideo ? (
+                                    <div className="relative w-full aspect-video">
+                                      <video
+                                        className="absolute top-0 left-0 w-full h-full rounded-lg"
+                                        src={media}
+                                        title={`${project.title} Video ${i + 1}`}
+                                        controls
+                                        playsInline
+                                      />
                                     </div>
                                   ) : (
                                     <img

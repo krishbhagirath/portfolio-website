@@ -206,6 +206,27 @@ export const projects: Project[] = [
   },
 
   {
+    id: "partnerup",
+    title: "PartnerUp",
+    description: "Full-stack platform that matches McMaster students with lab & tutorial partners by importing their Mosaic schedule.",
+    thumbnail: "/partnerup.png",
+    images: ["/partnerupdemo.mp4"],
+    tags: [
+      "Next.js", "TypeScript", "Prisma", "Supabase", "PostgreSQL", "Auth.js",
+      "Tailwind CSS", "Express", "Playwright", "GCP", "Vercel", "Resend"
+    ],
+    overview: "PartnerUp lets students import their Mosaic timetable, mark which labs and tutorials need a partner, browse classmates in the same section, and send or accept partner requests — turning the manual scramble of finding a lab partner into a simple matching flow.",
+    details: [
+      "• Full-stack Next.js (App Router) + TypeScript web app with Prisma and Supabase Postgres, styled in Tailwind CSS and deployed on Vercel.",
+      "• Auth.js authentication with email/password and Microsoft (Entra ID) sign-in, gated to @mcmaster.ca accounts.",
+      "• Dedicated Express + Playwright worker on a GCP VM that scrapes the student's Mosaic schedule behind an authenticated API, with a job queue capped at 2 headless browsers to stay within memory limits.",
+      "• Core loop: import schedule → mark sections → discover classmates → send/accept partner requests, with email notifications via Resend."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/partner-system" }],
+    category: "personal"
+  },
+
+  {
     id: "valid",
     title: "VALID",
     description: "Clinical AI tool to reduce unnecessary CT scans",

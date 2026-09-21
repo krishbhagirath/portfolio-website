@@ -441,26 +441,6 @@ export const projects: Project[] = [
   },
 
   {
-    id: "portfolio",
-    title: "Personal Portfolio",
-    description: "Responsive React + TypeScript portfolio showcasing my projects and experience.",
-    thumbnail: "/portfolio-home.png",
-    images: ["/portfolio-home.png"],
-    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Radix UI"],
-    overview: "A fast, accessible portfolio built with React and Tailwind CSS to highlight my technical work and design sense.",
-    details: [
-      "• Built with React 18, TypeScript, and Vite",
-      "• Custom UI using Radix primitives and Tailwind",
-      "• Responsive layouts with smooth animations",
-      "• Deployed via Vercel with GitHub version control",
-      "• Next: Add RAG AI chatbot and performance tuning to improve user experience"
-    ],
-    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/portfolio-website" }],
-    category: "personal",
-    subcategory: "software"
-  },
-
-  {
     id: "intellipark",
     title: "IntelliPark",
     description: "Smart parking system that detects open spots and guides drivers automatically.",

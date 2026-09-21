@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="FridgeMind: barcode scanner to STM32 to ESP32 gateway">
+  <defs>
+    <linearGradient id="fm-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0b0b0b"/>
+    </linearGradient>
+    <pattern id="fm-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+    <marker id="fm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#9aa0a6"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#fm-bg)"/>
+  <rect width="1200" height="675" fill="url(#fm-grid)"/>
+
+  <text x="72" y="104" fill="#f5f5f5" font-family="ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial" font-size="46" font-weight="300" letter-spacing="1">FridgeMind</text>
+  <text x="72" y="142" fill="#9aa0a6" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="19" letter-spacing="2">SCAN IN / SCAN OUT &#183; BARE-METAL INVENTORY</text>
+
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">
+    <g>
+      <rect x="72" y="248" width="268" height="150" rx="10" fill="#141414" stroke="#3a3a3a" stroke-width="2"/>
+      <text x="96" y="292" fill="#e8e8e8" font-size="22">GM65</text>
+      <text x="96" y="322" fill="#9aa0a6" font-size="16">barcode scanner</text>
+      <g stroke="#e8e8e8" stroke-width="3">
+        <path d="M100 350v34M110 350v34M118 350v34M130 350v34M138 350v34M150 350v34M158 350v34M170 350v34"/>
+      </g>
+    </g>
+
+    <g>
+      <rect x="466" y="230" width="268" height="186" rx="10" fill="#141414" stroke="#5a5a5a" stroke-width="2"/>
+      <text x="490" y="274" fill="#e8e8e8" font-size="22">STM32 F446RE</text>
+      <text x="490" y="304" fill="#9aa0a6" font-size="16">inventory table</text>
+      <text x="490" y="330" fill="#9aa0a6" font-size="16">ring buffer + FSM</text>
+      <rect x="490" y="350" width="220" height="38" rx="6" fill="#1f1f1f" stroke="#3a3a3a"/>
+      <text x="502" y="375" fill="#c9c9c9" font-size="14">EVT,seq,code,dir,qty</text>
+    </g>
+
+    <g>
+      <rect x="860" y="248" width="268" height="150" rx="10" fill="#141414" stroke="#3a3a3a" stroke-width="2"/>
+      <text x="884" y="292" fill="#e8e8e8" font-size="22">ESP32-S3</text>
+      <text x="884" y="322" fill="#9aa0a6" font-size="16">web page + Firebase</text>
+      <rect x="884" y="342" width="220" height="38" rx="6" fill="#1f1f1f" stroke="#3a3a3a"/>
+      <text x="896" y="367" fill="#c9c9c9" font-size="14">ACK,seq</text>
+    </g>
+
+    <g stroke="#9aa0a6" stroke-width="2" fill="none" marker-end="url(#fm-arrow)">
+      <path d="M344 312h114"/>
+      <path d="M738 300h114"/>
+    </g>
+    <path d="M852 356H742" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#fm-arrow)"/>
+    <text x="352" y="296" fill="#7a7f85" font-size="14">USART1 &#183; 9600</text>
+    <text x="746" y="284" fill="#7a7f85" font-size="14">USART3 &#183; 115200</text>
+
+    <rect x="72" y="480" width="1056" height="110" rx="10" fill="#111111" stroke="#2e2e2e" stroke-width="2"/>
+    <text x="100" y="522" fill="#9aa0a6" font-size="16">DAYS UNTIL EMPTY</text>
+    <text x="100" y="562" fill="#e8e8e8" font-size="22">linear regression &#183; 2.99 d MAE &#183; 10 multiply-adds on-device</text>
+    <g stroke="#4a4a4a" stroke-width="2" fill="none">
+      <path d="M820 566l48-26 48 12 48-34 48-8 48-26"/>
+    </g>
+  </g>
+</svg>

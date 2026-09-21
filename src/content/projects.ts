@@ -9,6 +9,8 @@ export interface Project {
   overview: string;
   details: string[];
   category: "personal" | "school";
+  /** Sub-filter within the Personal/Club tab. */
+  subcategory?: "software" | "ml" | "embedded";
   badge?: string;
   externalLinks?: {
     label: string;
@@ -139,6 +141,72 @@ export const projects: Project[] = [
   // ======================
 
   {
+    id: "fridgemind",
+    title: "FridgeMind",
+    description: "Barcode-driven pantry tracker on STM32 + ESP32, with an on-device model that predicts when each item runs out.",
+    thumbnail: "/fridgemind.svg",
+    images: ["/fridgemind.svg"],
+    tags: [
+      "STM32", "Embedded C", "Bare Metal", "ESP32-S3", "UART", "Interrupts",
+      "Ring Buffers", "State Machines", "Firebase", "scikit-learn", "Edge ML"
+    ],
+    overview: "FridgeMind is a bare-metal pantry inventory system: a GM65 barcode scanner feeds an STM32 Nucleo-F446RE that owns the inventory table, which streams every scan to an ESP32-S3 gateway serving a live web page and pushing history to Firebase. A trained regression model predicts days until each item runs out, deployed as ten multiply-accumulates in a C header.",
+    details: [
+      "\nFirmware (STM32, bare metal C, no RTOS):",
+      "  • Non-blocking superloop — barcode bytes arrive on a UART interrupt into a ring buffer, so the CPU never stalls waiting on the scanner.",
+      "  • Three concurrent USARTs: scanner in (9600), PC debug out, and the board-to-board event link (115200).",
+      "  • Retry state machine for the ESP32 link with a timeout on every state — a loose wire or a dead gateway cannot freeze scanning.",
+      "\nProtocol design:",
+      "  • Each event carries the absolute quantity, not a delta, so a rebooted ESP32 self-heals one scan at a time with no resynchronisation protocol.",
+      "  • ACK-before-network ordering on the gateway: Firebase round trips can exceed the STM32’s 1 s timeout, so uploads are queued and drained after acknowledging.",
+      "\nGateway (ESP32-S3):",
+      "  • Mirrors the inventory in RAM, serves a polled JSON endpoint plus a live web page over Wi-Fi.",
+      "  • Optional Firebase Realtime Database upload, compiled out entirely when unconfigured.",
+      "\nOn-device ML:",
+      "  • Built a 365-day household simulator, a feature pipeline constrained to features computable on-device, and a training harness.",
+      "  • Linear regression (2.99-day MAE) beat gradient boosting and both naive baselines — notably, stock ÷ consumption rate (4.98 days) is worse than guessing the median, because real consumption is bursty and weekend-heavy.",
+      "  • Because the linear model won, deployment is ten multiply-adds in a generated C header — no TFLite interpreter, no quantisation step.",
+      "\nVerification:",
+      "  • Host test suites compile the real firmware against shimmed STM32 HAL and Arduino peripherals, so logic is testable without boards.",
+      "  • Scanner → STM32 → inventory path confirmed on hardware; gateway path passes host tests and is pending wiring bring-up. Every claim is tracked against its evidence in a verification checklist."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/food-tracker" }],
+    category: "personal",
+    subcategory: "embedded"
+  },
+
+  {
+    id: "neuracore",
+    title: "NeuraCore",
+    description: "A SystemVerilog neural network accelerator with a 4-MAC parallel datapath, plus an ONNX-to-hardware compiler that runs real trained models on it.",
+    thumbnail: "/neuracore.svg",
+    images: ["/neuracore.svg"],
+    tags: [
+      "SystemVerilog", "RTL Design", "FSM", "Verilator", "cocotb", "PyTorch",
+      "ONNX", "INT8 Quantization", "Hardware Verification", "Computer Architecture"
+    ],
+    overview: "NeuraCore is a from-scratch INT8 neural network accelerator written in SystemVerilog. It executes a fully connected 8→16 layer with ReLU on a 4-MAC parallel array, and ships with a Python toolchain that quantizes an ONNX model and lowers its weights straight onto the hardware.",
+    details: [
+      "\nHardware (SystemVerilog RTL):",
+      "  • Built the full datapath bottom-up: MAC unit → 4-MAC parallel array → input/weight/bias/output memories → post-processing → top-level integration.",
+      "  • FSM controller sequences 16 neurons as four batches of 4, iterating 8 inputs per batch (IDLE → CLEAR → COMPUTE → POST_PROCESS → WRITE_OUTPUTS → NEXT_BATCH → DONE).",
+      "  • Post-process stage adds bias in the 32-bit accumulator domain, arithmetic-shifts back to INT8 scale, then applies ReLU with saturation — all four neurons in parallel.",
+      "  • Host write ports for loading inputs, weights, and biases, so the same silicon runs any model the compiler targets.",
+      "\nCompiler (Python):",
+      "  • Parses an ONNX graph, locates a Gemm layer that fits the accelerator’s 8×16 shape budget, and rejects anything that does not.",
+      "  • Post-training INT8 quantization: activation scale derived from calibration data, per-tensor weight scale, and biases quantized at the product scale so they land correctly in the accumulator.",
+      "  • Emits flat weight/bias files the RTL loads directly — no runtime, no interpreter.",
+      "\nVerification:",
+      "  • Per-module SystemVerilog testbenches at every integration step, so bugs were caught at the unit that caused them.",
+      "  • cocotb + Verilator regression checking RTL output against a Python golden model: 100 randomized tests, then 100 real inference samples from a trained PyTorch model — all bit-exact.",
+      "  • End result: a PyTorch model trained in Python produces the same outputs when executed on the RTL, validating the entire train → quantize → compile → execute chain."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/nn-accelerator" }],
+    category: "personal",
+    subcategory: "embedded"
+  },
+
+  {
     id: "cradlewatch",
     title: "CradleWatch",
     description: "AI-powered baby monitor that detects emotion and alerts parents of distress while they're away.",
@@ -170,7 +238,8 @@ export const projects: Project[] = [
       { label: "See More (Presentation)", url: "/cradlewatch.pdf" },
       { label: "GitHub", url: "https://github.com/krishbhagirath/baby-monitoring-MED-T" }
     ],
-    category: "personal"
+    category: "personal",
+    subcategory: "embedded"
   },
 
   {
@@ -202,7 +271,8 @@ export const projects: Project[] = [
       "  • FastAPI backend for model inference and API endpoints."
     ],
     externalLinks: [{ label: "GitHub", url: "https://github.com/McMasterAI-Society/DeepFakeDetector" }],
-    category: "personal"
+    category: "personal",
+    subcategory: "ml"
   },
 
   {
@@ -223,7 +293,8 @@ export const projects: Project[] = [
       "• Core loop: import schedule → mark sections → discover classmates → send/accept partner requests, with email notifications via Resend."
     ],
     externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/partner-system" }],
-    category: "personal"
+    category: "personal",
+    subcategory: "software"
   },
 
   {
@@ -245,7 +316,8 @@ export const projects: Project[] = [
       "• Deployable as a real-time API for integration into hospital workflows"
     ],
     externalLinks: [{ label: "Paper", url: "https://drive.google.com/file/d/1ayrYl8K3ZTCnZo7HGaIv4jEMrXu4T92v/view" }],
-    category: "personal"
+    category: "personal",
+    subcategory: "ml"
   },
 
   {
@@ -276,7 +348,8 @@ export const projects: Project[] = [
       { label: "Devpost", url: "https://devpost.com/software/gitcheck" },
       { label: "Live Site", url: "https://gdg-gitcheck.vercel.app" }
     ],
-    category: "personal"
+    category: "personal",
+    subcategory: "software"
   },
 
   {
@@ -305,7 +378,8 @@ export const projects: Project[] = [
       { label: "YouTube Demo", url: "https://www.youtube.com/watch?v=3doCmEJBar0" },
       { label: "Devpost", url: "https://devpost.com/software/nemo-0y1m7h" }
     ],
-    category: "personal"
+    category: "personal",
+    subcategory: "software"
   },
 
   {
@@ -327,7 +401,8 @@ export const projects: Project[] = [
       { label: "GitHub", url: "https://github.com/krishbhagirath/nba-match-predictor" },
       { label: "Live Site", url: "https://courtml.vercel.app/" }
     ],
-    category: "personal"
+    category: "personal",
+    subcategory: "ml"
   },
 
   {
@@ -361,7 +436,8 @@ export const projects: Project[] = [
       { label: "GitHub", url: "https://github.com/krishbhagirath" },
       { label: "Devpost", url: "https://devpost.com/software/pawgress-t78w9h" }
     ],
-    category: "personal"
+    category: "personal",
+    subcategory: "software"
   },
 
   {
@@ -380,7 +456,8 @@ export const projects: Project[] = [
       "• Next: Add RAG AI chatbot and performance tuning to improve user experience"
     ],
     externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/portfolio-website" }],
-    category: "personal"
+    category: "personal",
+    subcategory: "software"
   },
 
   {
@@ -402,6 +479,7 @@ export const projects: Project[] = [
       "  • The project underscored how hands-on technical innovation can serve as a springboard for entrepreneurship and social impact."
     ],
     externalLinks: [{ label: "View DECA Business Report", url: "/decareport.pdf" }],
-    category: "personal"
+    category: "personal",
+    subcategory: "embedded"
   }
 ];

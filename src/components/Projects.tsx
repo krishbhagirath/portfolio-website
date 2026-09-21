@@ -13,13 +13,26 @@ const DevpostIcon = () => (
 );
 
 type ProjectTab = "personal" | "school";
+type PersonalFilter = "all" | "software" | "ml" | "embedded";
+
+const PERSONAL_FILTERS: { value: PersonalFilter; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "software", label: "Software" },
+  { value: "ml", label: "ML" },
+  { value: "embedded", label: "Embedded" },
+];
 
 export const Projects = () => {
   const [tab, setTab] = useState<ProjectTab>("personal");
+  const [personalFilter, setPersonalFilter] = useState<PersonalFilter>("all");
 
   const filteredProjects = useMemo(() => {
-    return projects.filter((p) => p.category === tab);
-  }, [tab]);
+    const byCategory = projects.filter((p) => p.category === tab);
+
+    if (tab !== "personal" || personalFilter === "all") return byCategory;
+
+    return byCategory.filter((p) => p.subcategory === personalFilter);
+  }, [tab, personalFilter]);
 
   return (
     <section id="projects" className="py-24 px-6 sm:px-8 lg:px-12">
@@ -30,7 +43,8 @@ export const Projects = () => {
         </h2>
 
         {/* Toggle Buttons */}
-        <div className="flex items-center gap-2 mb-12">
+        <div className="mb-12 space-y-4">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setTab("personal")}
             className={`px-3 py-1.5 text-sm rounded-md border font-light transition
@@ -52,6 +66,27 @@ export const Projects = () => {
           >
             School
           </button>
+        </div>
+
+        {/* Sub-filter: only meaningful inside Personal/Club */}
+        {tab === "personal" && (
+          <div className="flex flex-wrap items-center gap-2">
+            {PERSONAL_FILTERS.map(({ value, label }) => (
+              <button
+                key={value}
+                onClick={() => setPersonalFilter(value)}
+                aria-pressed={personalFilter === value}
+                className={`px-3 py-1 text-xs rounded-full border font-light transition
+                  ${personalFilter === value
+                    ? "border-foreground/60 bg-foreground/10 text-foreground"
+                    : "border-foreground/15 text-muted-foreground hover:border-foreground/35 hover:text-foreground"
+                  }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
         </div>
 
         {/* Project Grid */}

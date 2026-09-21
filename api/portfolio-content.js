@@ -55,6 +55,17 @@ functional prototype for proactive infant care.
     cross-generator generalization, achieving up to 96.7% accuracy on AI-GenBench and OpenFake benchmarks.
     • Enhanced ViT performance by 14% via fine-tuning DeiT models with MLP heads and differential learning rates.
     • Implemented a Next.js and FastAPI web app, utilizing Grad-CAM for visual heatmaps of deepfake predictions.
+- **FridgeMind:** An embedded pantry inventory tracker (barcode scanner + STM32 + ESP32).
+    • Wrote bare-metal C firmware for an STM32 Nucleo-F446RE driving three concurrent USARTs, with interrupt-driven barcode input into a ring buffer so the superloop never blocks.
+    • Designed an ACK'd board-to-board event protocol that sends absolute quantity rather than deltas, letting a rebooted ESP32 gateway self-heal with no resynchronisation logic.
+    • Built an ESP32-S3 Wi-Fi gateway serving a live inventory web page and JSON API, with queued Firebase uploads that acknowledge before network work to stay inside the STM32's 1s timeout.
+    • Trained a "days until empty" regression model on a 365-day household simulator; linear regression (2.99-day MAE) beat gradient boosting and both naive baselines, so it deploys as 10 multiply-adds in a C header rather than a TFLite runtime.
+    • Verified with host test suites that compile the real firmware against shimmed STM32 HAL and Arduino peripherals.
+- **NeuraCore:** A SystemVerilog INT8 neural network accelerator with an ONNX-to-hardware compiler.
+    • Designed the full RTL datapath bottom-up (MAC unit → 4-MAC parallel array → input/weight/bias/output memories → post-processing), executing a fully connected 8→16 layer with ReLU.
+    • Wrote an FSM controller sequencing 16 neurons as 4 batches of 4, and a post-process stage that adds bias in the 32-bit accumulator domain, rescales by arithmetic shift, then applies ReLU with INT8 saturation.
+    • Built a Python compiler that parses an ONNX graph, finds a Gemm layer fitting the hardware's shape budget, and applies post-training INT8 quantization with calibration-derived activation scale and product-scale biases.
+    • Verified with per-module testbenches plus a cocotb/Verilator regression: 100 randomized tests and 100 real trained-model inferences, all bit-exact against a Python golden model.
 - **PawGress:** A gamified AI habit tracker mobile app built with React Native and the Cohere API.
 - **IntelliPark:** A smart parking prototype built with Arduino and ultrasonic sensors. Developed working prototype into a full startup business plan for the ESB competition at DECA.
 - **Hardware/School Projects:** Designed programmable logic systems on FPGAs, built an autonomous luggage handling mechanism with Python and CAD.

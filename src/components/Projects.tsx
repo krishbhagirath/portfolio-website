@@ -12,27 +12,26 @@ const DevpostIcon = () => (
   </svg>
 );
 
-type ProjectTab = "personal" | "school";
-type PersonalFilter = "all" | "software" | "ml" | "embedded";
+type ProjectFilter = "all" | "software" | "ml" | "embedded" | "school";
 
-const PERSONAL_FILTERS: { value: PersonalFilter; label: string }[] = [
+const PROJECT_FILTERS: { value: ProjectFilter; label: string }[] = [
   { value: "all", label: "All" },
   { value: "software", label: "Software" },
-  { value: "ml", label: "ML" },
+  { value: "ml", label: "AI/ML" },
   { value: "embedded", label: "Embedded" },
+  { value: "school", label: "School" },
 ];
 
 export const Projects = () => {
-  const [tab, setTab] = useState<ProjectTab>("personal");
-  const [personalFilter, setPersonalFilter] = useState<PersonalFilter>("all");
+  const [filter, setFilter] = useState<ProjectFilter>("all");
 
+  // projects.ts is already in display order (personal before school), so filtering keeps that order.
   const filteredProjects = useMemo(() => {
-    const byCategory = projects.filter((p) => p.category === tab);
+    if (filter === "all") return projects;
+    if (filter === "school") return projects.filter((p) => p.category === "school");
 
-    if (tab !== "personal" || personalFilter === "all") return byCategory;
-
-    return byCategory.filter((p) => p.subcategory === personalFilter);
-  }, [tab, personalFilter]);
+    return projects.filter((p) => p.category === "personal" && p.subcategory === filter);
+  }, [filter]);
 
   return (
     <section id="projects" className="py-24 px-6 sm:px-8 lg:px-12">
@@ -42,51 +41,22 @@ export const Projects = () => {
           Projects
         </h2>
 
-        {/* Toggle Buttons */}
-        <div className="mb-12 space-y-4">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setTab("personal")}
-            className={`px-3 py-1.5 text-sm rounded-md border font-light transition
-              ${tab === "personal"
-                ? "bg-foreground text-background border-foreground"
-                : "bg-transparent text-foreground border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5"
-              }`}
-          >
-            Personal/Club
-          </button>
-
-          <button
-            onClick={() => setTab("school")}
-            className={`px-3 py-1.5 text-sm rounded-md border font-light transition
-              ${tab === "school"
-                ? "bg-foreground text-background border-foreground"
-                : "bg-transparent text-foreground border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5"
-              }`}
-          >
-            School
-          </button>
-        </div>
-
-        {/* Sub-filter: only meaningful inside Personal/Club */}
-        {tab === "personal" && (
-          <div className="flex flex-wrap items-center gap-2">
-            {PERSONAL_FILTERS.map(({ value, label }) => (
-              <button
-                key={value}
-                onClick={() => setPersonalFilter(value)}
-                aria-pressed={personalFilter === value}
-                className={`px-3 py-1 text-xs rounded-full border font-light transition
-                  ${personalFilter === value
-                    ? "border-foreground/60 bg-foreground/10 text-foreground"
-                    : "border-foreground/15 text-muted-foreground hover:border-foreground/35 hover:text-foreground"
-                  }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        )}
+        {/* Category Filters */}
+        <div className="mb-12 flex flex-wrap items-center gap-2">
+          {PROJECT_FILTERS.map(({ value, label }) => (
+            <button
+              key={value}
+              onClick={() => setFilter(value)}
+              aria-pressed={filter === value}
+              className={`px-3 py-1.5 text-sm rounded-md border font-light transition
+                ${filter === value
+                  ? "bg-foreground text-background border-foreground"
+                  : "bg-transparent text-foreground border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5"
+                }`}
+            >
+              {label}
+            </button>
+          ))}
         </div>
 
         {/* Project Grid */}

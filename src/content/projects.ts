@@ -9,7 +9,7 @@ export interface Project {
   overview: string;
   details: string[];
   category: "personal" | "school";
-  /** Sub-filter within the Personal/Club tab. */
+  /** Discipline filter (Software / AI/ML / Embedded) for personal/club projects. */
   subcategory?: "software" | "ml" | "embedded";
   badge?: string;
   externalLinks?: {
@@ -19,132 +19,126 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // ======================
-  // SCHOOL
-  // ======================
-
-  {
-    id: "terminal-snake",
-    title: "Terminal Snake Game",
-    description: "User-controlled terminal Snake game built with OOP and core memory management concepts in C/C++.",
-    thumbnail: "/snaketitle.png",
-    images: ["/snake.png", "/uml.png"],
-    tags: ["C", "C++", "OOP", "Memory Management"],
-    overview: "A terminal-based Snake game focused on clean object-oriented structure and low-level programming fundamentals.",
-    details: [
-      "• Implemented core game loop, input handling, collision rules, and score tracking.",
-      "• Used OOP to organize entities (snake, board, food) for maintainability and clarity.",
-      "• Applied memory management concepts while building and debugging runtime behavior."
-    ],
-    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/oop-snake-game" }],
-    category: "school"
-  },
-
-  {
-    id: "programmable-logic-design",
-    title: "Programmable Logic Design",
-    description: "Design, simulation, and FPGA deployment of digital logic systems using gates, flip-flops, counters, and Verilog.",
-    thumbnail: "/programmable-logic.png",
-    images: ["/board.png", "/schematic.png", "/verilog.png", "/scope.png"],
-    tags: ["Digital Logic", "Verilog", "Quartus", "FPGA", "DE10", "Flip-Flops", "Counters", "Oscilloscope"],
-    overview: "Digital logic labs spanning breadboard circuits through Verilog simulation and FPGA implementation.",
-    details: [
-      "• Built and tested combinational logic with gates and breadboard-based circuits.",
-      "• Designed sequential systems including flip-flops and counters.",
-      "• Simulated designs in Quartus (Verilog + schematics) and deployed to DE10 FPGA hardware.",
-
-      "\nLab Reports:",
-      "• Lab 1: Implemented fundamental combinational logic by building all basic gates using only NANDs and measuring gate delay.",
-      "• Lab 2: Designed advanced combinational circuits, including K-map minimization, multiplexers, and 4-bit adders/subtractors using 2’s complement.",
-      "• Lab 3: Introduced Verilog HDL for modeling and simulation, implementing a decoder and a 7-segment display driver.",
-      "• Lab 4: Explored synchronous sequential logic with shift registers and counters, and measured EEPROM access time.",
-    ],
-    externalLinks: [{ label: "Read Full Lab Reports", url: "https://drive.google.com/drive/folders/1f5j9WMxIzEll9RHo5fb3HrEXittdcKEK?usp=drive_link" }],
-    category: "school"
-  },
-  {
-    id: "airport",
-    title: "Autonomous Airport System",
-    description: "CAD-designed system with Python automation for luggage handling and passenger data management.",
-    thumbnail: "/luggageCAD.png",
-    images: [
-      "/luggageCAD.png",
-      "/airport1.png",
-      "/airport2.png",
-      "/airport3.png",
-      "/airport4.png",
-      "/airport5.png"
-    ],
-    videos: ["/mechanism-video.mp4"],
-    tags: [
-      "Python", "Autodesk Inventor", "CAD", "3D Printing", "Laser Cutting",
-      "Prusa Slicer", "Rotary Actuators", "Mechanism Design",
-      "Mechanical Assembly", "Q-arm Robotics", "Team Collaboration",
-      "Problem Solving", "System Integration"
-    ],
-    overview: "As part of McMaster's first year project-based engineering course, this 9-week design project challenged our team to automate airport luggage handling using both robotics and custom-built mechanisms. The result was a semi-autonomous system that sorted and transported luggage based on barcode input, combining Python logic, CAD design, and hardware integration into one cohesive solution.",
-    details: [
-      "• Custom Python Programs: Built scripts to control the Q-arm for barcode interpretation and data sorting (Slide 5). Created a parallel script to automate the full luggage-handling flow.",
-      "• CAD Design & 3D Printing: Modeled and assembled the luggage transport mechanism in Autodesk Inventor, then laser-cut or printed each part for testing.",
-      "• Embedded System Integration: Merged the Q-arm logic with our mechanism using rotary actuators and ramps to autonomously move luggage from point A to B.",
-      "• Mechanical Feasibility: Considered torque, retraction forces, and alignment tolerances during design — iterating on physical builds based on test outcomes.",
-      "• Iterative Prototyping: Overcame failures such as ramp misalignment and retraction issues by redesigning part geometries and adjusting materials to improve real-world function.",
-      "• Beyond meeting the project's engineering goals, this challenge strengthened our ability to combine software with hardware under real-world design constraints. It showcased how thoughtful prototyping, iterative problem-solving, and multidisciplinary teamwork can transform a basic concept into a functional, testable airport automation system."
-    ],
-    externalLinks: [
-      {
-        label: "Read Full Project Breakdown",
-        url: "https://bhagirak.wixsite.com/portfolio1p13/portfolio"
-      }
-    ],
-    category: "school"
-  },
-  {
-    id: "clipcall",
-    title: "ClipCall",
-    description: "Cane attachment designed for an Usher syndrome client to enable hands-free phone use.",
-    thumbnail: "/clipcall-main.png",
-    images: [
-      "/clipcall.png",
-      "/clipcall-prototypes.png",
-      "/clipcall-exploded.png",
-      "/clipcall-enhancement.png"
-    ],
-    videos: ["/clipcall-demonstration.MOV"],
-    tags: [
-      "Autodesk Inventor", "CAD Modelling", "Mechanical Design",
-      "3D Printing", "Design Thinking", "Adaptability",
-      "Client-Oriented Engineering"
-    ],
-    overview: "As part of McMaster's IMPACT initiative, the Power in Community project focused on designing an assistive device for Kimberly, a client with Usher Syndrome. Our mission was to create a simple yet effective solution to improve her daily mobility by addressing the challenge of holding both her cane and phone during walks.",
-    details: [
-      "• Designed a cane-mounted phone holder that allows hands-free GPS navigation and communication.",
-      "• Created multiple CAD iterations in Autodesk Inventor, progressively simplifying the design for comfort, usability, and 3D printability.",
-      "• Employed design matrices and morph charts to evaluate alternatives and guide decisions.",
-      "• Chose Velcro straps and MagSafe mount for adjustable fit and ease of use with limited dexterity.",
-      "• Iteratively tested and revised the prototype based on Kimberly's needs, feedback from TA evaluations, and mechanical constraints",
-      "• Pivoted from an initially overambitious smart-cane concept with sensors and AI to a more feasible mechanical design within the 6-week timeline.",
-      "• As project coordinator, contributed to documentation, coordinated meetings, and drove creative decisions like simplifying the clamp and adding adjustability mechanisms.",
-      "This project highlighted the true essence of engineering—not just building solutions, but tailoring them to real client needs with empathy, creativity, and purpose."
-    ],
-    externalLinks: [
-      {
-        label: "Read Full Project Breakdown",
-        url: "https://bhagirak.wixsite.com/portfolio1p13/copy-of-project-1"
-      }
-    ],
-    category: "school"
-  },
+  // Array order is display order: personal/club first (featured ones at the top), then school.
 
   // ======================
   // PERSONAL / CLUB
   // ======================
 
   {
+    id: "partnerup",
+    title: "PartnerUp",
+    description: "Matches McMaster students with lab and tutorial partners by importing their Mosaic schedule.",
+    thumbnail: "/partnerup.png",
+    images: ["/partnerupdemo.mp4"],
+    tags: [
+      "Next.js", "TypeScript", "Prisma", "Supabase", "PostgreSQL", "Auth.js",
+      "Tailwind CSS", "Express", "Playwright", "GCP", "Vercel", "Resend"
+    ],
+    overview: "PartnerUp lets students import their Mosaic timetable, mark which labs and tutorials need a partner, browse classmates in the same section, and send or accept partner requests — turning the manual scramble of finding a lab partner into a simple matching flow.",
+    details: [
+      "• Full-stack Next.js (App Router) + TypeScript web app with Prisma and Supabase Postgres, styled in Tailwind CSS and deployed on Vercel.",
+      "• Auth.js authentication with email/password and Microsoft (Entra ID) sign-in, gated to @mcmaster.ca accounts.",
+      "• Dedicated Express + Playwright worker on a GCP VM that scrapes the student's Mosaic schedule behind an authenticated API, with a job queue capped at 2 headless browsers to stay within memory limits.",
+      "• Core loop: import schedule → mark sections → discover classmates → send/accept partner requests, with email notifications via Resend."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/partner-system" }],
+    category: "personal",
+    subcategory: "software"
+  },
+
+  {
+    id: "valid",
+    title: "VALID",
+    description: "Clinical AI tool that predicts whether a CT scan is needed at ER triage.",
+    thumbnail: "/VALID.png",
+    images: ["/valid_interface.png", "/valid_architecture.png", "/valid_scan_unnecessary.png", "/modelComparison.png"],
+    tags: ["Python", "Pandas", "NumPy", "scikit-learn", "PyTorch", "XGBoost", "ClinicalBERT"],
+    badge: "CUCAI Winner 2026",
+    overview: "VALID (Verified AI for Limited Inefficient Diagnostics) is an AI-powered clinical decision support tool that predicts CT scan necessity at emergency triage by combining NLP on clinical notes with patient vitals in a multimodal ML pipeline.",
+    details: [
+      "🏆 Won Responsible AI Award at CUCAI 2026",
+      "• Integrates unstructured clinical text (ClinicalBERT) with structured patient vitals",
+      "• Ensemble model (MLP, Random Forest, XGBoost) for robust and safe predictions",
+      "• Achieved ~88% recall and ~91% precision on CT scan necessity classification",
+      "• Optimized to minimize false negatives and prioritize patient safety",
+      "• Reduces unnecessary imaging, lowering radiation exposure and healthcare costs",
+      "• Deployable as a real-time API for integration into hospital workflows"
+    ],
+    externalLinks: [{ label: "Paper", url: "https://drive.google.com/file/d/1ayrYl8K3ZTCnZo7HGaIv4jEMrXu4T92v/view" }],
+    category: "personal",
+    subcategory: "ml"
+  },
+
+  {
+    id: "deepfakedetector",
+    title: "DeepFakeDetector",
+    description: "Hybrid CNN, Vision Transformer, and FFT model for detecting AI-generated images.",
+    thumbnail: "/dfd.png",
+    images: ["/macaisociety.png", "/flowchart.png"],
+    tags: [
+      "Python", "PyTorch", "Convolutional Neural Networks (CNNs)", "Vision Transformer", "FFT", "NumPy", "Pandas",
+      "MatPlotLib", "Next.js", "FastAPI"
+    ],
+    overview: "Overview: Working in a 6-member interdisciplinary team at the McMaster Artificial Intelligence Society to develop an interpretable system for detecting deepfake and AI-generated images.",
+    details: [
+      "Designing a hybrid deepfake detection model, using:",
+      "  • CNNs for localized spatial artifacts and texture inconsistencies.",
+      "  • Vision Transformers for global semantic and contextual features.",
+      "  • FFT-based analysis for frequency-domain generative artifacts.",
+      "\nPersonal contributions are focused on improving model performance and robustness.",
+      "  • Contributing to model architecture design, creating lear visual architecture diagrams illustrating multi-stream feature extraction and learned feature fusion.",
+      "  • Fine-tuning Vision Transformer models on large-scale datasets (OpenFake, WildFake, Dragon datasets).",
+      "  • Experimenting with patch sizes, learning rates, and attention settings.",
+      "  • Implementing task-specific CNN classification heads to aggregate learned features into a single prediction output.",
+      "\nGoal: Building interpretability into the prediction pipeline.",
+      "  • Generating Grad-CAM heatmaps to highlight influential image regions.",
+      "  • Visualizing attention maps to explain model confidence scores.",
+      "\nNext Steps: Developing a full-stack web application for real-time inference.",
+      "  • Next.js frontend for image upload and results visualization.",
+      "  • FastAPI backend for model inference and API endpoints."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/McMasterAI-Society/DeepFakeDetector" }],
+    category: "personal",
+    subcategory: "ml"
+  },
+
+  {
+    id: "neuracore",
+    title: "NeuraCore",
+    description: "INT8 neural network accelerator in SystemVerilog, with an ONNX-to-hardware compiler.",
+    thumbnail: "/mac-unit.png",
+    images: ["/neuracore.svg"],
+    tags: [
+      "SystemVerilog", "RTL Design", "FSM", "Verilator", "cocotb", "PyTorch",
+      "ONNX", "INT8 Quantization", "Hardware Verification", "Computer Architecture"
+    ],
+    overview: "NeuraCore is a from-scratch INT8 neural network accelerator written in SystemVerilog. It executes a fully connected 8→16 layer with ReLU on a 4-MAC parallel array, and ships with a Python toolchain that quantizes an ONNX model and lowers its weights straight onto the hardware.",
+    details: [
+      "\nHardware (SystemVerilog RTL):",
+      "  • Built the full datapath bottom-up: MAC unit → 4-MAC parallel array → input/weight/bias/output memories → post-processing → top-level integration.",
+      "  • FSM controller sequences 16 neurons as four batches of 4, iterating 8 inputs per batch (IDLE → CLEAR → COMPUTE → POST_PROCESS → WRITE_OUTPUTS → NEXT_BATCH → DONE).",
+      "  • Post-process stage adds bias in the 32-bit accumulator domain, arithmetic-shifts back to INT8 scale, then applies ReLU with saturation — all four neurons in parallel.",
+      "  • Host write ports for loading inputs, weights, and biases, so the same silicon runs any model the compiler targets.",
+      "\nCompiler (Python):",
+      "  • Parses an ONNX graph, locates a Gemm layer that fits the accelerator’s 8×16 shape budget, and rejects anything that does not.",
+      "  • Post-training INT8 quantization: activation scale derived from calibration data, per-tensor weight scale, and biases quantized at the product scale so they land correctly in the accumulator.",
+      "  • Emits flat weight/bias files the RTL loads directly — no runtime, no interpreter.",
+      "\nVerification:",
+      "  • Per-module SystemVerilog testbenches at every integration step, so bugs were caught at the unit that caused them.",
+      "  • cocotb + Verilator regression checking RTL output against a Python golden model: 100 randomized tests, then 100 real inference samples from a trained PyTorch model — all bit-exact.",
+      "  • End result: a PyTorch model trained in Python produces the same outputs when executed on the RTL, validating the entire train → quantize → compile → execute chain."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/nn-accelerator" }],
+    category: "personal",
+    subcategory: "embedded"
+  },
+
+  {
     id: "fridgemind",
     title: "FridgeMind",
-    description: "Barcode-driven pantry tracker on STM32 + ESP32, with an on-device model that predicts when each item runs out.",
-    thumbnail: "/fridgemind.svg",
+    description: "STM32 + ESP32 pantry tracker that predicts when each item will run out.",
+    thumbnail: "/stm32-nucleo.jpg",
     images: ["/fridgemind.svg"],
     tags: [
       "STM32", "Embedded C", "Bare Metal", "ESP32-S3", "UART", "Interrupts",
@@ -176,40 +170,94 @@ export const projects: Project[] = [
   },
 
   {
-    id: "neuracore",
-    title: "NeuraCore",
-    description: "A SystemVerilog neural network accelerator with a 4-MAC parallel datapath, plus an ONNX-to-hardware compiler that runs real trained models on it.",
-    thumbnail: "/neuracore.svg",
-    images: ["/neuracore.svg"],
-    tags: [
-      "SystemVerilog", "RTL Design", "FSM", "Verilator", "cocotb", "PyTorch",
-      "ONNX", "INT8 Quantization", "Hardware Verification", "Computer Architecture"
+    id: "gitcheck",
+    title: ".gitCheck",
+    description: "AI judging engine that checks hackathon claims against GitHub history.",
+    thumbnail: "/gitchecklogo.png",
+    images: [
+      "/gitchecklogo.png",
+      "https://www.youtube.com/watch?v=PPvSAhMUhZY",
+      "/gitcheckprojects.png",
+      "/gitcheckSAB.png",
+      "/gitcheckAnalysis.png",
+      "/gitcheckTU.png",
+      "/gitcheckFlag.png"
     ],
-    overview: "NeuraCore is a from-scratch INT8 neural network accelerator written in SystemVerilog. It executes a fully connected 8→16 layer with ReLU on a 4-MAC parallel array, and ships with a Python toolchain that quantizes an ONNX model and lowers its weights straight onto the hardware.",
+    tags: ["LangChain", "LangGraph", "Gemini Pro", "FastAPI", "Next.js 15", "PyGithub", "BeautifulSoup4"],
+    overview: ".gitCheck is an AI-driven integrity verification engine designed to automate hackathon judging. It employs a multi-agent orchestration layer to cross-reference Devpost submissions with real-time GitHub activity, ensuring projects are original and built within the competition window.",
     details: [
-      "\nHardware (SystemVerilog RTL):",
-      "  • Built the full datapath bottom-up: MAC unit → 4-MAC parallel array → input/weight/bias/output memories → post-processing → top-level integration.",
-      "  • FSM controller sequences 16 neurons as four batches of 4, iterating 8 inputs per batch (IDLE → CLEAR → COMPUTE → POST_PROCESS → WRITE_OUTPUTS → NEXT_BATCH → DONE).",
-      "  • Post-process stage adds bias in the 32-bit accumulator domain, arithmetic-shifts back to INT8 scale, then applies ReLU with saturation — all four neurons in parallel.",
-      "  • Host write ports for loading inputs, weights, and biases, so the same silicon runs any model the compiler targets.",
-      "\nCompiler (Python):",
-      "  • Parses an ONNX graph, locates a Gemm layer that fits the accelerator’s 8×16 shape budget, and rejects anything that does not.",
-      "  • Post-training INT8 quantization: activation scale derived from calibration data, per-tensor weight scale, and biases quantized at the product scale so they land correctly in the accumulator.",
-      "  • Emits flat weight/bias files the RTL loads directly — no runtime, no interpreter.",
-      "\nVerification:",
-      "  • Per-module SystemVerilog testbenches at every integration step, so bugs were caught at the unit that caused them.",
-      "  • cocotb + Verilator regression checking RTL output against a Python golden model: 100 randomized tests, then 100 real inference samples from a trained PyTorch model — all bit-exact.",
-      "  • End result: a PyTorch model trained in Python produces the same outputs when executed on the RTL, validating the entire train → quantize → compile → execute chain."
+      "• Multi-Agent Orchestration: Architected a system using LangChain and LangGraph to coordinate specialized AI agents for deep semantic analysis of code and documentation.",
+      "• Server-Side Analysis: Integrated GitHub REST API for real-time repository auditing of commits, languages, and file trees without cloning overhead.",
+      "• Dual-Verification System: Cross-references Devpost feature claims with GitHub commit timelines to ensure chronological accuracy and implementation validity.",
+      "• Feature Investigator: Built a Google Gemini Pro agent to perform AI-driven code-to-documentation analysis, identifying 'Weighted Claims' vs secondary utilities.",
+      "• Scalable Backend: Engineered a high-volume judging pipeline using Next.js 15 and Python/FastAPI, featuring a secure multi-tenant dashboard with Auth0 and Prisma."
     ],
-    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/nn-accelerator" }],
+    externalLinks: [
+      { label: "GitHub", url: "https://github.com/krishbhagirath/GitCheck" },
+      { label: "Devpost", url: "https://devpost.com/software/gitcheck" },
+      { label: "Live Site", url: "https://gdg-gitcheck.vercel.app" }
+    ],
     category: "personal",
-    subcategory: "embedded"
+    subcategory: "software"
+  },
+
+  {
+    id: "hiready",
+    title: "Hiready",
+    description: "AI mock interviewer that gives live feedback on real interview questions.",
+    thumbnail: "/hireadyhome.png",
+    images: [
+      "/hireadyhome.png",
+      "/hireadypreinterview.png",
+      "/hireadynemo.png",
+      "/hireadyreport1.png",
+      "/hireadyreport2.png"
+    ],
+    tags: ["C++", "Next.js", "React", "Google Gemini", "ElevenLabs API", "Presage SDK", "OpenCV"],
+    overview: "Hiready is a comprehensive AI mock interviewer designed to simulate real-world interview scenarios, ranging from behavioral inquiries to deep technical questions. It uses the Presage C++ SDK to detect physiological stress levels and emotional cues via webcam, while simultaneously transcribing spoken conversation. This data is processed by Google's Gemini to generate a detailed, actionable feedback report on both delivery composure and answer content.",
+    details: [
+      "• Built a real-time AI interviewer using C++ and Next.js.",
+      "• Integrated Google Gemini for intelligent conversation and feedback.",
+      "• Used Presage SDK to analyze physiological stress signals during the interview.",
+      "• Implemented ElevenLabs API for lifelike voice interaction.",
+      "• Designed a comprehensive feedback system to help users improve their interview skills."
+    ],
+    externalLinks: [
+      { label: "GitHub", url: "https://github.com/krishbhagirath/smart-interviewer" },
+      { label: "YouTube Demo", url: "https://www.youtube.com/watch?v=3doCmEJBar0" },
+      { label: "Devpost", url: "https://devpost.com/software/nemo-0y1m7h" }
+    ],
+    category: "personal",
+    subcategory: "software"
+  },
+
+  {
+    id: "nbamatchpredictor",
+    title: "CourtML",
+    description: "Gradient boosting pipeline that predicts NBA game outcomes every day.",
+    thumbnail: "/courtml.png",
+    images: ["/courtml.png"],
+    tags: ["Python", "React.js", "Sci-Kit Learn", "GitHub Actions", "HistGradientBoostingClassifier", "NBA API", "Chart.js", "Vercel"],
+    overview: "CourtML is a production-grade NBA match predictor that leverages a HistGradientBoostingClassifier (V5) trained on over 17,000 game records spanning 8+ seasons to deliver sub-second win probabilities.",
+    details: [
+      "• Automated Inference Pipeline: Robust system triggered daily at 6 AM ET to generate fresh win probabilities and matchup data.",
+      "• Matchup Merge Architecture: Custom data join aligning 10-game rolling averages for home and away teams, evaluating historical form vs. head-to-head dynamics.",
+      "• Visual Explainability: Integrated react-chartjs-2 to contrast team metrics side-by-side, highlighting specific statistical edges (e.g., Four Factors).",
+      "• Custom Tooltip Engine: Logic-driven interface calculating exact advantage percentages for leading teams in any category.",
+      "• Premium UI/UX: High-performance dashboard utilizing CSS Modules for scoped styling and an AnimatedBackground.js system for dynamic, non-deterministic visuals."
+    ],
+    externalLinks: [
+      { label: "GitHub", url: "https://github.com/krishbhagirath/nba-match-predictor" },
+      { label: "Live Site", url: "https://courtml.vercel.app/" }
+    ],
+    category: "personal",
+    subcategory: "ml"
   },
 
   {
     id: "cradlewatch",
     title: "CradleWatch",
-    description: "AI-powered baby monitor that detects emotion and alerts parents of distress while they're away.",
+    description: "AI baby monitor that detects distress and alerts parents in real time.",
     thumbnail: "/cradlewatch.png",
     images: ["/cradlewatch exploded.png", "/cradlewatch poster.png"],
     videos: ["/cradlewatch.mov"],
@@ -243,172 +291,9 @@ export const projects: Project[] = [
   },
 
   {
-    id: "deepfakedetector",
-    title: "DeepFakeDetector",
-    description: "Hybrid deepfake detection using CNNs, Vision Transformers, and frequency-domain (FFT) fusion model.",
-    thumbnail: "/dfd.png",
-    images: ["/macaisociety.png", "/flowchart.png"],
-    tags: [
-      "Python", "PyTorch", "Convolutional Neural Networks (CNNs)", "Vision Transformer", "FFT", "NumPy", "Pandas",
-      "MatPlotLib", "Next.js", "FastAPI"
-    ],
-    overview: "Overview: Working in a 6-member interdisciplinary team at the McMaster Artificial Intelligence Society to develop an interpretable system for detecting deepfake and AI-generated images.",
-    details: [
-      "Designing a hybrid deepfake detection model, using:",
-      "  • CNNs for localized spatial artifacts and texture inconsistencies.",
-      "  • Vision Transformers for global semantic and contextual features.",
-      "  • FFT-based analysis for frequency-domain generative artifacts.",
-      "\nPersonal contributions are focused on improving model performance and robustness.",
-      "  • Contributing to model architecture design, creating lear visual architecture diagrams illustrating multi-stream feature extraction and learned feature fusion.",
-      "  • Fine-tuning Vision Transformer models on large-scale datasets (OpenFake, WildFake, Dragon datasets).",
-      "  • Experimenting with patch sizes, learning rates, and attention settings.",
-      "  • Implementing task-specific CNN classification heads to aggregate learned features into a single prediction output.",
-      "\nGoal: Building interpretability into the prediction pipeline.",
-      "  • Generating Grad-CAM heatmaps to highlight influential image regions.",
-      "  • Visualizing attention maps to explain model confidence scores.",
-      "\nNext Steps: Developing a full-stack web application for real-time inference.",
-      "  • Next.js frontend for image upload and results visualization.",
-      "  • FastAPI backend for model inference and API endpoints."
-    ],
-    externalLinks: [{ label: "GitHub", url: "https://github.com/McMasterAI-Society/DeepFakeDetector" }],
-    category: "personal",
-    subcategory: "ml"
-  },
-
-  {
-    id: "partnerup",
-    title: "PartnerUp",
-    description: "Full-stack platform that matches McMaster students with lab & tutorial partners by importing their Mosaic schedule.",
-    thumbnail: "/partnerup.png",
-    images: ["/partnerupdemo.mp4"],
-    tags: [
-      "Next.js", "TypeScript", "Prisma", "Supabase", "PostgreSQL", "Auth.js",
-      "Tailwind CSS", "Express", "Playwright", "GCP", "Vercel", "Resend"
-    ],
-    overview: "PartnerUp lets students import their Mosaic timetable, mark which labs and tutorials need a partner, browse classmates in the same section, and send or accept partner requests — turning the manual scramble of finding a lab partner into a simple matching flow.",
-    details: [
-      "• Full-stack Next.js (App Router) + TypeScript web app with Prisma and Supabase Postgres, styled in Tailwind CSS and deployed on Vercel.",
-      "• Auth.js authentication with email/password and Microsoft (Entra ID) sign-in, gated to @mcmaster.ca accounts.",
-      "• Dedicated Express + Playwright worker on a GCP VM that scrapes the student's Mosaic schedule behind an authenticated API, with a job queue capped at 2 headless browsers to stay within memory limits.",
-      "• Core loop: import schedule → mark sections → discover classmates → send/accept partner requests, with email notifications via Resend."
-    ],
-    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/partner-system" }],
-    category: "personal",
-    subcategory: "software"
-  },
-
-  {
-    id: "valid",
-    title: "VALID",
-    description: "Clinical AI tool to reduce unnecessary CT scans",
-    thumbnail: "/VALID.png",
-    images: ["/valid_interface.png", "/valid_architecture.png", "/valid_scan_unnecessary.png", "/modelComparison.png"],
-    tags: ["Python", "Pandas", "NumPy", "scikit-learn", "PyTorch", "XGBoost", "ClinicalBERT"],
-    badge: "CUCAI Winner 2026",
-    overview: "VALID (Verified AI for Limited Inefficient Diagnostics) is an AI-powered clinical decision support tool that predicts CT scan necessity at emergency triage by combining NLP on clinical notes with patient vitals in a multimodal ML pipeline.",
-    details: [
-      "🏆 Won Responsible AI Award at CUCAI 2026",
-      "• Integrates unstructured clinical text (ClinicalBERT) with structured patient vitals",
-      "• Ensemble model (MLP, Random Forest, XGBoost) for robust and safe predictions",
-      "• Achieved ~88% recall and ~91% precision on CT scan necessity classification",
-      "• Optimized to minimize false negatives and prioritize patient safety",
-      "• Reduces unnecessary imaging, lowering radiation exposure and healthcare costs",
-      "• Deployable as a real-time API for integration into hospital workflows"
-    ],
-    externalLinks: [{ label: "Paper", url: "https://drive.google.com/file/d/1ayrYl8K3ZTCnZo7HGaIv4jEMrXu4T92v/view" }],
-    category: "personal",
-    subcategory: "ml"
-  },
-
-  {
-    id: "gitcheck",
-    title: ".gitCheck",
-    description: "Automated judging engine that cross-references project claims with GitHub data to validate authenticity.",
-    thumbnail: "/gitchecklogo.png",
-    images: [
-      "/gitchecklogo.png",
-      "https://www.youtube.com/watch?v=PPvSAhMUhZY",
-      "/gitcheckprojects.png",
-      "/gitcheckSAB.png",
-      "/gitcheckAnalysis.png",
-      "/gitcheckTU.png",
-      "/gitcheckFlag.png"
-    ],
-    tags: ["LangChain", "LangGraph", "Gemini Pro", "FastAPI", "Next.js 15", "PyGithub", "BeautifulSoup4"],
-    overview: ".gitCheck is an AI-driven integrity verification engine designed to automate hackathon judging. It employs a multi-agent orchestration layer to cross-reference Devpost submissions with real-time GitHub activity, ensuring projects are original and built within the competition window.",
-    details: [
-      "• Multi-Agent Orchestration: Architected a system using LangChain and LangGraph to coordinate specialized AI agents for deep semantic analysis of code and documentation.",
-      "• Server-Side Analysis: Integrated GitHub REST API for real-time repository auditing of commits, languages, and file trees without cloning overhead.",
-      "• Dual-Verification System: Cross-references Devpost feature claims with GitHub commit timelines to ensure chronological accuracy and implementation validity.",
-      "• Feature Investigator: Built a Google Gemini Pro agent to perform AI-driven code-to-documentation analysis, identifying 'Weighted Claims' vs secondary utilities.",
-      "• Scalable Backend: Engineered a high-volume judging pipeline using Next.js 15 and Python/FastAPI, featuring a secure multi-tenant dashboard with Auth0 and Prisma."
-    ],
-    externalLinks: [
-      { label: "GitHub", url: "https://github.com/krishbhagirath/GitCheck" },
-      { label: "Devpost", url: "https://devpost.com/software/gitcheck" },
-      { label: "Live Site", url: "https://gdg-gitcheck.vercel.app" }
-    ],
-    category: "personal",
-    subcategory: "software"
-  },
-
-  {
-    id: "hiready",
-    title: "Hiready",
-    description: "An interview preparation agent that simulates a real interview and gives you live feedback on REAL interview questions.",
-    thumbnail: "/hireadyhome.png",
-    images: [
-      "/hireadyhome.png",
-      "/hireadypreinterview.png",
-      "/hireadynemo.png",
-      "/hireadyreport1.png",
-      "/hireadyreport2.png"
-    ],
-    tags: ["C++", "Next.js", "React", "Google Gemini", "ElevenLabs API", "Presage SDK", "OpenCV"],
-    overview: "Hiready is a comprehensive AI mock interviewer designed to simulate real-world interview scenarios, ranging from behavioral inquiries to deep technical questions. It uses the Presage C++ SDK to detect physiological stress levels and emotional cues via webcam, while simultaneously transcribing spoken conversation. This data is processed by Google's Gemini to generate a detailed, actionable feedback report on both delivery composure and answer content.",
-    details: [
-      "• Built a real-time AI interviewer using C++ and Next.js.",
-      "• Integrated Google Gemini for intelligent conversation and feedback.",
-      "• Used Presage SDK to analyze physiological stress signals during the interview.",
-      "• Implemented ElevenLabs API for lifelike voice interaction.",
-      "• Designed a comprehensive feedback system to help users improve their interview skills."
-    ],
-    externalLinks: [
-      { label: "GitHub", url: "https://github.com/krishbhagirath/smart-interviewer" },
-      { label: "YouTube Demo", url: "https://www.youtube.com/watch?v=3doCmEJBar0" },
-      { label: "Devpost", url: "https://devpost.com/software/nemo-0y1m7h" }
-    ],
-    category: "personal",
-    subcategory: "software"
-  },
-
-  {
-    id: "nbamatchpredictor",
-    title: "CourtML",
-    description: "Production-ready machine learning system predicting NBA game outcomes with high precision via a custom gradient boosting pipeline.",
-    thumbnail: "/courtml.png",
-    images: ["/courtml.png"],
-    tags: ["Python", "React.js", "Sci-Kit Learn", "GitHub Actions", "HistGradientBoostingClassifier", "NBA API", "Chart.js", "Vercel"],
-    overview: "CourtML is a production-grade NBA match predictor that leverages a HistGradientBoostingClassifier (V5) trained on over 17,000 game records spanning 8+ seasons to deliver sub-second win probabilities.",
-    details: [
-      "• Automated Inference Pipeline: Robust system triggered daily at 6 AM ET to generate fresh win probabilities and matchup data.",
-      "• Matchup Merge Architecture: Custom data join aligning 10-game rolling averages for home and away teams, evaluating historical form vs. head-to-head dynamics.",
-      "• Visual Explainability: Integrated react-chartjs-2 to contrast team metrics side-by-side, highlighting specific statistical edges (e.g., Four Factors).",
-      "• Custom Tooltip Engine: Logic-driven interface calculating exact advantage percentages for leading teams in any category.",
-      "• Premium UI/UX: High-performance dashboard utilizing CSS Modules for scoped styling and an AnimatedBackground.js system for dynamic, non-deterministic visuals."
-    ],
-    externalLinks: [
-      { label: "GitHub", url: "https://github.com/krishbhagirath/nba-match-predictor" },
-      { label: "Live Site", url: "https://courtml.vercel.app/" }
-    ],
-    category: "personal",
-    subcategory: "ml"
-  },
-
-  {
     id: "pawgress",
     title: "PawGress",
-    description: "AI habit tracker using Cohere API to analyze behavior patterns and generate personalized improvement plans.",
+    description: "Gamified habit tracker with personalized coaching from Cohere.",
     thumbnail: "/pawgress1.jpg",
     images: [
       "/pawgress1.jpg",
@@ -461,5 +346,141 @@ export const projects: Project[] = [
     externalLinks: [{ label: "View DECA Business Report", url: "/decareport.pdf" }],
     category: "personal",
     subcategory: "embedded"
+  },
+
+  // ======================
+  // SCHOOL
+  // ======================
+
+  {
+    id: "spatial-mapper",
+    title: "Spatial Mapper",
+    description: "Rotating time-of-flight scanner that turns 360° sweeps into 3D point clouds.",
+    thumbnail: "/spatial-mapper-vl53l1x.jpg",
+    images: ["/spatial-mapper-vl53l1x.jpg"],
+    tags: ["C", "Embedded C", "MATLAB", "I2C", "UART", "GPIO", "MSP432E401Y", "VL53L1X", "Time-of-Flight"],
+    overview: "Spatial Mapper is an embedded sensing system that rotates a VL53L1X time-of-flight sensor on a motor, driven by an MSP432E401Y microcontroller, to capture 360° distance scans and rebuild the surrounding space as an XYZ point cloud in MATLAB.",
+    details: [
+      "• Generated 360° spatial maps from 32-point scans by configuring register-level I2C, GPIO, and time-of-flight sensor interfaces.",
+      "• Streamed scan data at 115200 baud over UART, synchronized with motor control, all in embedded C.",
+      "• Produced XYZ point clouds in MATLAB from successive scans, with sensor calibration verified on an oscilloscope.",
+      "\nThe card image shows the VL53L1X time-of-flight sensor used for ranging (product photo: Adafruit)."
+    ],
+    category: "school"
+  },
+
+  {
+    id: "programmable-logic-design",
+    title: "Programmable Logic Design",
+    description: "Digital logic labs, from breadboard gates to Verilog on an FPGA.",
+    thumbnail: "/programmable-logic.png",
+    images: ["/board.png", "/schematic.png", "/verilog.png", "/scope.png"],
+    tags: ["Digital Logic", "Verilog", "Quartus", "FPGA", "DE10", "Flip-Flops", "Counters", "Oscilloscope"],
+    overview: "Digital logic labs spanning breadboard circuits through Verilog simulation and FPGA implementation.",
+    details: [
+      "• Built and tested combinational logic with gates and breadboard-based circuits.",
+      "• Designed sequential systems including flip-flops and counters.",
+      "• Simulated designs in Quartus (Verilog + schematics) and deployed to DE10 FPGA hardware.",
+
+      "\nLab Reports:",
+      "• Lab 1: Implemented fundamental combinational logic by building all basic gates using only NANDs and measuring gate delay.",
+      "• Lab 2: Designed advanced combinational circuits, including K-map minimization, multiplexers, and 4-bit adders/subtractors using 2’s complement.",
+      "• Lab 3: Introduced Verilog HDL for modeling and simulation, implementing a decoder and a 7-segment display driver.",
+      "• Lab 4: Explored synchronous sequential logic with shift registers and counters, and measured EEPROM access time.",
+    ],
+    externalLinks: [{ label: "Read Full Lab Reports", url: "https://drive.google.com/drive/folders/1f5j9WMxIzEll9RHo5fb3HrEXittdcKEK?usp=drive_link" }],
+    category: "school"
+  },
+
+  {
+    id: "terminal-snake",
+    title: "Terminal Snake Game",
+    description: "Terminal Snake game in C++, built around OOP and manual memory management.",
+    thumbnail: "/snaketitle.png",
+    images: ["/snake.png", "/uml.png"],
+    tags: ["C", "C++", "OOP", "Memory Management"],
+    overview: "A terminal-based Snake game focused on clean object-oriented structure and low-level programming fundamentals.",
+    details: [
+      "• Implemented core game loop, input handling, collision rules, and score tracking.",
+      "• Used OOP to organize entities (snake, board, food) for maintainability and clarity.",
+      "• Applied memory management concepts while building and debugging runtime behavior."
+    ],
+    externalLinks: [{ label: "GitHub", url: "https://github.com/krishbhagirath/oop-snake-game" }],
+    category: "school"
+  },
+
+  {
+    id: "airport",
+    title: "Autonomous Airport System",
+    description: "Semi-autonomous luggage handling system combining CAD mechanisms and Python.",
+    thumbnail: "/luggageCAD.png",
+    images: [
+      "/luggageCAD.png",
+      "/airport1.png",
+      "/airport2.png",
+      "/airport3.png",
+      "/airport4.png",
+      "/airport5.png"
+    ],
+    videos: ["/mechanism-video.mp4"],
+    tags: [
+      "Python", "Autodesk Inventor", "CAD", "3D Printing", "Laser Cutting",
+      "Prusa Slicer", "Rotary Actuators", "Mechanism Design",
+      "Mechanical Assembly", "Q-arm Robotics", "Team Collaboration",
+      "Problem Solving", "System Integration"
+    ],
+    overview: "As part of McMaster's first year project-based engineering course, this 9-week design project challenged our team to automate airport luggage handling using both robotics and custom-built mechanisms. The result was a semi-autonomous system that sorted and transported luggage based on barcode input, combining Python logic, CAD design, and hardware integration into one cohesive solution.",
+    details: [
+      "• Custom Python Programs: Built scripts to control the Q-arm for barcode interpretation and data sorting (Slide 5). Created a parallel script to automate the full luggage-handling flow.",
+      "• CAD Design & 3D Printing: Modeled and assembled the luggage transport mechanism in Autodesk Inventor, then laser-cut or printed each part for testing.",
+      "• Embedded System Integration: Merged the Q-arm logic with our mechanism using rotary actuators and ramps to autonomously move luggage from point A to B.",
+      "• Mechanical Feasibility: Considered torque, retraction forces, and alignment tolerances during design — iterating on physical builds based on test outcomes.",
+      "• Iterative Prototyping: Overcame failures such as ramp misalignment and retraction issues by redesigning part geometries and adjusting materials to improve real-world function.",
+      "• Beyond meeting the project's engineering goals, this challenge strengthened our ability to combine software with hardware under real-world design constraints. It showcased how thoughtful prototyping, iterative problem-solving, and multidisciplinary teamwork can transform a basic concept into a functional, testable airport automation system."
+    ],
+    externalLinks: [
+      {
+        label: "Read Full Project Breakdown",
+        url: "https://bhagirak.wixsite.com/portfolio1p13/portfolio"
+      }
+    ],
+    category: "school"
+  },
+
+  {
+    id: "clipcall",
+    title: "ClipCall",
+    description: "Cane attachment designed for an Usher syndrome client to enable hands-free phone use.",
+    thumbnail: "/clipcall-main.png",
+    images: [
+      "/clipcall.png",
+      "/clipcall-prototypes.png",
+      "/clipcall-exploded.png",
+      "/clipcall-enhancement.png"
+    ],
+    videos: ["/clipcall-demonstration.MOV"],
+    tags: [
+      "Autodesk Inventor", "CAD Modelling", "Mechanical Design",
+      "3D Printing", "Design Thinking", "Adaptability",
+      "Client-Oriented Engineering"
+    ],
+    overview: "As part of McMaster's IMPACT initiative, the Power in Community project focused on designing an assistive device for Kimberly, a client with Usher Syndrome. Our mission was to create a simple yet effective solution to improve her daily mobility by addressing the challenge of holding both her cane and phone during walks.",
+    details: [
+      "• Designed a cane-mounted phone holder that allows hands-free GPS navigation and communication.",
+      "• Created multiple CAD iterations in Autodesk Inventor, progressively simplifying the design for comfort, usability, and 3D printability.",
+      "• Employed design matrices and morph charts to evaluate alternatives and guide decisions.",
+      "• Chose Velcro straps and MagSafe mount for adjustable fit and ease of use with limited dexterity.",
+      "• Iteratively tested and revised the prototype based on Kimberly's needs, feedback from TA evaluations, and mechanical constraints",
+      "• Pivoted from an initially overambitious smart-cane concept with sensors and AI to a more feasible mechanical design within the 6-week timeline.",
+      "• As project coordinator, contributed to documentation, coordinated meetings, and drove creative decisions like simplifying the clamp and adding adjustability mechanisms.",
+      "This project highlighted the true essence of engineering—not just building solutions, but tailoring them to real client needs with empathy, creativity, and purpose."
+    ],
+    externalLinks: [
+      {
+        label: "Read Full Project Breakdown",
+        url: "https://bhagirak.wixsite.com/portfolio1p13/copy-of-project-1"
+      }
+    ],
+    category: "school"
   }
 ];

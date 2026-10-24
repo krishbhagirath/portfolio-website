@@ -9,16 +9,29 @@ export interface ExperienceItem {
 
 export const workExperience: ExperienceItem[] = [
   {
-    title: "Software Engineering Intern",
+    title: "AI/ML Engineer Intern",
+    organization: "MobilitiQ",
+    period: "May 2026 - Present",
+    logo: "/mobilitiq.png",
+    responsibilities: [
+      "Accelerated an Austin ride-hailing simulation 19× using A* routing and k-d tree candidate pruning.",
+      "Engineered a discrete-event EMS simulator with precomputed Dijkstra travel-time tables and MEXCLP ambulance allocation, simulating 6,000 calls for 300 ambulances on a 75K-node road graph in 1.8 s.",
+      "Developed TensorFlow LSTM demand forecasts on 757K+ Austin trips; seasonal ensembling cut offline MAE by 17%.",
+      "Trained PPO policies across 128 parallel simulators and served them as ONNX models via FastAPI, matching PyTorch outputs to within 8e-7.",
+      "Built a FastAPI/React Native EMS replay tool that renders 300-unit map frames at 6.8 ms median latency.",
+    ]
+  },
+  {
+    title: "Software Engineer Intern",
     organization: "Novologic",
     period: "May 2025 - August 2025",
     logo: "/novologic.png",
     responsibilities: [
-      "Refactored 15+ controllers and engineered full-stack features with Laravel, PHP, SQL, and JavaScript, implementing the repository pattern to allow for scalable architecture.",
-      "Prototyped an AI-driven help chatbot using React.js and Laravel to streamline user navigation.",
-      "Generated 10+ qualified leads through building and optimizing responsive CRM-driven email templates (HTML/CSS) and integrated email APIs for automated outreach campaigns.",
-      "Increased feature test coverage from ~65% to ~95% through QA audits and edge-case testing to drive product refinement and ensure release-readiness.",
-      "Enhanced and organized investor-facing decks and documents for clarity, consistency, and impact.",
+      "Refactored 15+ Laravel controllers into dependency-injected services and repositories, and integrated PHPUnit regression suites into GitHub Actions CI, raising code coverage from 65% to 100%.",
+      "Reduced dashboard API p95 latency from 480 ms to 210 ms with Eloquent eager loading and composite MySQL indexes.",
+      "Deployed a React RAG assistant with Gemini and semantic document search, used daily by 20+ clients.",
+      "Automated HubSpot lead intake with webhooks and idempotent upserts, processing 250 inquiries per month.",
+      "Secured 750+ document uploads across 6+ clients using AWS S3 presigned URLs and tenant-scoped authorization.",
     ]
   },
   {
